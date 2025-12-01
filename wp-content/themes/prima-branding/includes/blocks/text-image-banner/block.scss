@@ -1,0 +1,40 @@
+.text-image-banner {
+    background: #858777;
+    @apply text-[#fff] py-50 lg:py-75 xl:pt-100 xl:pb-119;
+    img {
+        @apply w-full h-auto object-cover object-center;
+        &.mobile-image {
+            @apply block md:hidden;
+        }
+        &.desktop-image {
+            @apply hidden md:block;
+        }
+    }
+
+    h2 {
+        color: #FFF;
+        font-style: normal;
+        font-weight: 300;
+        @apply text-[32px] leading-1 xl:text-[45px] 2xl:text-[55px] mb-24;
+    }
+
+    .site-container {
+        @apply flex flex-col xl:flex-row gap-30 xl:gap-44  xl:items-center 2xl:items-start;
+    }
+
+    .text-column,
+    .image-column {
+        @apply xl:w-1/2;
+    }
+
+    .text-column {
+        @apply xl:w-[55%] xl:max-w-[708px];
+
+        p {
+            @apply mb-20 xl:mb-27;
+        }
+    }
+    .image-column {
+        @apply xl:max-w-[688px] 2xl:mt-30;
+    }
+}

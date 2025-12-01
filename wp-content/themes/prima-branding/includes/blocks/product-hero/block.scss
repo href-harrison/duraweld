@@ -1,0 +1,85 @@
+.product-hero {
+    background: rgba(190, 185, 137, 0.17);
+    @apply overflow-hidden;
+
+    
+    img {
+        @apply h-auto w-full object-cover object-center xl:mr-30 2xl:mr-15;
+        &.mobile-image {
+            @apply block md:hidden;
+        }
+        &.desktop-image {
+            @apply hidden md:block;
+        }
+        @media screen and (min-width: 1440px) {
+            width: calc(100% + 80px);
+            max-width: unset;
+            @apply mr-0;
+        }
+    }
+
+    .btn-pb {
+        margin-bottom: 0 !important;
+        @media screen and (min-width: 1280px) {
+            margin-top: 36px !important;
+        }
+    }
+
+    h3 {
+        color: #444;
+        font-size: 27px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 35px; /* 129.63% */
+        letter-spacing: 5.4px;
+        text-transform: uppercase;
+        @apply block relative w-fit mb-25 xl:mb-30;
+        &:after {
+            @apply absolute bottom-0 right-0 h-1 w-[calc(100%+25px)] md:w-[calc(100%+44px)] xl:w-[calc(100%+100px)];
+            content: '';
+            background-color: #FBB034;
+        }
+    }
+
+    h1 {
+        @apply mb-20 xl:mb-30;
+    }
+
+    .btn-pb {
+        @apply mt-30 xl:mb-36;
+    }
+
+    .hero-content {
+        @apply flex flex-col gap-30 xl:flex-row 2xl:gap-0;
+
+        &--left {
+            @apply xl:w-1/2 pt-58 xl:pb-50 2xl:py-69;
+
+            .text, h1 {
+                @apply xl:max-w-[588px];
+            }
+        }
+
+        &--right {
+            @apply relative isolate xl:w-1/2 xl:flex xl:items-center xl:justify-end 2xl:items-start 2xl:pt-82;
+            &:after {
+                @apply absolute bottom-0 -left-25 h-[80%] w-screen bg-[#858777] md:-left-50;
+                content: '';
+                z-index: -1;
+                pointer-events: none;
+                @media screen and (min-width: 1280px) {
+                    @apply bottom-0 left-[unset] h-full xl:left-13 2xl:left-15;
+                    width: 50vw;
+                }
+            }
+
+            @media screen and (min-width: 1440px) {
+                @apply justify-center 2xl:justify-end;
+            }
+        }
+    }
+
+    & + .product-split {
+        @apply mt-50 xl:mt-120 2xl:mt-140;
+    }
+}

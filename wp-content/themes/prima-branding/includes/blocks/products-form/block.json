@@ -1,0 +1,29 @@
+{
+    "name": "acf/products-form",
+    "title": "Products Form",
+    "description": "Single product form section",
+    "category": "theme",
+    "apiVersion": 2,
+    "example": {
+        "attributes": {
+            "data": {
+                "preview-screenshot": "block-preview.png"
+            },
+            "mode": "preview"
+        }
+    },
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "includes/blocks/products-form/block.php"
+    },
+    "style": "file:./dist/block.min.css",
+    "supports": {
+        "anchor": true,
+        "mode": true,
+        "align": false,
+        "color": {
+            "background": true,
+            "text": false
+        }
+    }
+}

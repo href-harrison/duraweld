@@ -1,0 +1,29 @@
+{
+    "name": "acf/product-hero",
+    "title": "Product Hero",
+    "description": "Single product hero",
+    "category": "theme",
+    "apiVersion": 2,
+    "example": {
+        "attributes": {
+            "data": {
+                "preview-screenshot": "block-preview.png"
+            },
+            "mode": "preview"
+        }
+    },
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "includes/blocks/product-hero/block.php"
+    },
+    "style": "file:./dist/block.min.css",
+    "supports": {
+        "anchor": true,
+        "mode": true,
+        "align": false,
+        "color": {
+            "background": true,
+            "text": false
+        }
+    }
+}

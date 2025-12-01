@@ -1,0 +1,8 @@
+.contact-hero img {height: auto;width: 100%;-o-object-fit: cover;object-fit: cover;-o-object-position: center;object-position: center
+}.contact-hero img.image-mobile {display: block;min-height: 350px
+}@media (min-width: 768px) {.contact-hero img.image-mobile {display: none
+    }
+}.contact-hero img.image-desktop {display: none;max-height: 386px
+}@media (min-width: 768px) {.contact-hero img.image-desktop {display: block
+    }
+}

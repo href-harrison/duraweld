@@ -1,0 +1,145 @@
+.gform_wrapper {
+    @apply lg:w-full;
+    .gform_anchor {
+        display: none;
+    }
+    .gform_footer {
+        @apply xl:w-[30%] relative ;
+        margin: 0 !important;
+        padding: 0 !important;
+        
+        button {
+            border-radius: 0 !important;
+            position: relative !important;
+            background-color: #FFC60B !important;
+            margin-top: 24px !important;
+            color: #000 !important;
+            text-align: left !important;
+            font-size: 24px !important;
+            font-style: normal !important;
+            font-weight: 300 !important;
+            line-height: 27px !important;
+            width: 100% !important;
+            display: flex !important;
+            height: 62px !important;
+            max-width: 243px !important;
+            justify-content: space-between !important;
+            // clip-path: polygon(
+            // 100% 0, 
+            // 100% calc(100% - 12px), 
+            // calc(100% - 12px) 100%, 
+            // 0 100%, 
+            // 0 0
+            // ) !important;
+            transition: all 0.3s ease-in-out !important;
+            @apply  relative;
+            @media screen and (min-width: 1600px) {
+                font-size: 24px !important;
+            }
+            &:after {
+                position: absolute !important;
+                top: 50% !important;
+                right:17px !important; 
+                transform: translateY(-50%) !important;
+                content: '' !important;
+                background-image: url('../assets/arrow.svg') !important;
+                @apply  w-20 h-18;
+                background-size: contain !important;
+                background-repeat: no-repeat !important;
+                background-position: center !important;
+    
+            }
+        }
+        // @media screen and (min-width: 1280px) {
+        //     max-width: 199px !important;
+        // }
+    }
+    .gform_validation_errors {
+        
+        .gform_submission_error  {
+            
+        }
+    }
+    .gform_heading {
+        display: none !important;
+    }
+    form {
+        @apply flex flex-col;
+        
+        .gform_body {
+            @apply mb-14 lg:mb-0 lg:w-full;
+            
+            .gform_fields {
+                @apply gap-y-15 xl:gap-y-18;
+                .gfield {
+                    
+                    label {
+                        
+                    }
+                    input {
+                        color: #444;
+                        border-radius: 0;
+                        font-size: 20px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 27px !important;
+                        &::placeholder {
+                            color: #444;
+
+                            font-size: 20px;
+                            font-style: normal;
+                            font-weight: 400;
+                            line-height: 27px !important;
+                        }
+                        &[type=text],
+                        &[type=tel],
+                        &[type=email] {
+                            @apply h-52 xl:h-fit xl:py-17;
+                            border: 1px solid #939598 !important;
+                        }
+                    }
+                    &.gfield--type-textarea {
+                        
+                    }
+                    
+                    &_error {
+                        label {
+                            
+                        }
+                        input {
+                            
+                        }
+                        .validation_message  {
+                            
+                        }
+                    }
+                }
+                .gfield_contains_required  {
+
+                }
+
+                textarea {
+                    resize: none;
+                    border-radius: 0 !important;
+                    color: #444;
+                    border-radius: 0;
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 27px !important;
+                    &::placeholder {
+                        color: #444;
+
+                        font-size: 20px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 27px !important;
+                    }
+                    @media screen and (min-width: 1600px) {
+                        min-height: 278px;
+                    }
+                }
+            }
+        }
+    }
+}

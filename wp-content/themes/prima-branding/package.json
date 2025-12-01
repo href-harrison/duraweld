@@ -1,0 +1,36 @@
+{
+  "name": "tailwind-href-starter-theme",
+  "version": "1.0.0",
+  "description": "Tailwind Starter for Wordpress",
+  "scripts": {
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "production": "mix --production"
+  },
+  "author": "Tom C Href",
+  "license": "ISC",
+  "devDependencies": {
+    "aos": "^2.3.4",
+    "browser-sync": "^2.29.3",
+    "browser-sync-webpack-plugin": "^2.3.0",
+    "bs-html-injector": "^3.0.3",
+    "cross-env": "^7.0.2",
+    "fast-glob": "^3.2.12",
+    "import-glob-loader": "^1.1.0",
+    "laravel-mix": "^6.0.0-beta.17",
+    "node-sass": "^7.0.3",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.55.0",
+    "sass-loader": "^12.1.0",
+    "vue-template-compiler": "^2.6.12"
+  },
+  "dependencies": {
+    "autoprefixer": "^9.8.6",
+    "glightbox": "^3.2.0",
+    "postcss": "^8.1",
+    "swiper": "^8.4.2",
+    "tailwindcss": "^3.3.0"
+  }
+}

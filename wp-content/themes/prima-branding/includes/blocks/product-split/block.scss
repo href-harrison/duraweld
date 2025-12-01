@@ -1,0 +1,132 @@
+.product-split {
+    @apply my-50 lg:my-75 xl:my-110;
+    img {
+        @apply h-full w-full object-cover object-center;
+        &.mobile-image {
+            @apply block md:hidden;
+        }
+        &.desktop-image {
+            @apply hidden md:block;
+        }
+    }
+
+    figure {
+        @apply h-full w-full;
+    }
+
+    h2 {
+        color: #444;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 1;
+        @apply text-[27px] lg:text-[32px] 2xl:text-[42px] mb-24;
+    }
+
+    ul {
+        @apply mb-20 xl:mb-27;
+    }
+
+    li {
+        @apply font-light block pl-36;
+        strong, b {
+            font-weight: 500 !important;
+        }
+        &:before {
+            @apply mr-15 absolute left-0 top-5;
+        }
+    }
+
+    p, li {
+        @apply mb-20 2xl:mb-26 last:mb-0;
+    }
+
+    .split-content {
+        @apply flex flex-col gap-30 xl:gap-50 2xl:gap-30 lg:flex-row;
+
+        &--left {
+            @apply lg:w-1/2 flex flex-col xl:justify-center;
+
+            p, ul {
+                @apply 2xl:max-w-[685px];
+            }
+
+            .btn-pb {
+                @apply mt-24 xl:mt-auto;
+            }
+
+            blockquote {
+                @apply relative flex gap-15 mb-30 xl:mb-35;
+                &:before {
+                    position: relative;
+                    display: block;
+                    background-image: url('../quote-mark.svg');
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    content: '';
+                    @apply w-44 h-28;
+                }
+
+                p {
+                    width: calc(100% - 44px);
+                    @apply xl:max-w-[586px] last:mb-0;
+                    color: #444;
+                    font-size: 30px;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 40px;
+                    @media screen and (min-width: 1280px) {
+                        max-width: 586px !important;
+                    }
+                    @media only screen and (max-width: 768px) {
+                        font-size: 24px;
+                        line-height: 32px;
+                    }
+                    @media only screen and (max-width: 380px) {
+                        font-size: 20px;
+                        line-height: 28px;
+                    }
+                }
+            }
+
+            &.quote {
+                @apply xl:pl-21 ;
+                p {
+                    @apply lg:ml-40 xl:ml-59;
+                    strong {
+                        font-weight: 500 !important;
+                    }
+                }
+                blockquote {
+                    p {
+                        @apply ml-0;
+                        
+                    }
+                }
+            }
+        }
+        &--right {
+            @apply lg:w-1/2;
+
+            
+        }
+
+        &.reversed {
+            @apply lg:flex-row-reverse;
+
+            .split-content--left {
+                p, ul {
+                    @apply 2xl:max-w-[unset];
+                }
+            }
+            .split-content--right {
+                figure {
+                    @apply 2xl:max-w-[665px];
+                    img {
+                        @apply xl:aspect-[665/408];
+                    }
+                }
+            }
+        }
+    }
+}

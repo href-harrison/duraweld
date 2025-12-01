@@ -1,0 +1,108 @@
+.contact-section {
+    @apply my-50 lg:my-75 2xl:mt-72;
+    .site-container {
+        @apply max-w-[1240px]  2xl:max-w-[1440px];
+    }
+
+    h1 {
+        @apply mb-40 xl:mb-72 text-[35px] xl:text-[45px] 2xl:text-[55px] leading-1;
+    }
+
+    h3 {
+        color: #444;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 1;
+        @apply text-[22px] 2xl:text-[28px] mb-24 xl:mb-30 font-semibold;
+    }
+
+    h4 {
+        color: #444;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 27px;
+        @media screen and (max-width: 380px) {
+            font-size: 18px;
+            line-height: 135%;
+        }
+    }
+
+    .contact-container {
+        @apply flex flex-col gap-30 md:gap-21 md:flex-row; 
+    }
+
+    .contact-column {
+        @apply md:w-1/2;
+
+        &:first-child {
+            @apply lg:w-[33%];
+            h3 {
+                @apply 2xl:mb-36;
+            }
+        }
+        &:last-child {
+            @apply lg:w-[67%];
+
+            h3 {
+                @apply 2xl:mb-43;
+            }
+        }
+
+        p {
+            @apply mb-27;
+            &:last-of-type {
+                @apply mb-0;
+            }
+            color: #444;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            @apply text-[16px] lg:text-[18px] 2xl:leading-[27px];
+
+            strong {
+                font-weight: 500 !important;
+            }
+        }
+
+
+        .address {
+            
+        }
+
+        .contact-sm {
+            @apply flex items-center gap-19 mt-32;
+        }
+
+        .info {
+            @apply mt-70 xl:mt-93 max-w-[335px];
+
+            img {
+                @apply mb-20 h-67 w-67 xl:h-87 xl:w-87;
+            }
+
+            a {
+                @apply underline;
+            }
+        }
+    }
+
+    .gform_wrapper {
+    
+
+        .gform_validation_errors {
+            
+            .gform_submission_error  {
+                
+            }
+        }
+        .gform_body {
+            textarea {
+                @media screen and (min-width: 1600px) {
+                    min-height: 192px !important;
+                    max-height: 192px !important;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "name": "acf/case-study-relation",
+    "title": "Case Study Relation",
+    "description": "Case study relationship section",
+    "category": "theme",
+    "apiVersion": 2,
+    "example": {
+        "attributes": {
+            "data": {
+                "preview-screenshot": "block-preview.png"
+            },
+            "mode": "preview"
+        }
+    },
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "includes/blocks/case-study-relation/block.php"
+    },
+    "style": "file:./dist/block.min.css",
+    "supports": {
+        "anchor": true, 
+        "mode": true,
+        "align": false
+    }
+}

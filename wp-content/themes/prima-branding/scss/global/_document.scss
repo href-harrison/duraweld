@@ -1,0 +1,235 @@
+::-moz-selection {
+  text-shadow: none;
+  background: black;
+  color: white;
+}
+
+::selection {
+  text-shadow: none;
+  background: black;
+  color: white;
+}
+
+html, 
+body {
+  font-size: 100%;
+  color: #444;
+  box-sizing: border-box;
+  @apply font-gibson;
+}
+
+html {
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  &.no-scroll {
+    overflow: hidden;
+  }
+}
+
+body {
+  overflow-x: hidden;
+}
+
+p {
+  @apply mb-15;
+}
+
+
+.products-grid {
+  @apply relative grid grid-cols-1 md:grid-cols-2 gap-y-24 gap-x-20;
+}
+
+.products-hero {
+  h1 {
+    color: #444;
+    text-align: center;
+    font-style: normal;
+    font-weight: 300;
+    @apply text-[32px] leading-1 xl:text-[45px] 2xl:text-[55px] text-center my-30 lg:my-45 xl:mt-59 xl:mb-63;
+  }
+
+  img {
+    @apply w-full h-auto object-cover object-center;
+    &.image-mobile {
+      @apply block md:hidden min-h-[250px];
+    } 
+    &.image-desktop {
+      @apply hidden md:block xl:min-h-[560px];
+    }
+  }
+
+  .video-container {
+    @apply relative w-full h-auto min-h-[250px] md:min-h-[350px] xl:min-h-[450px] 2xl:min-h-[560px];
+  }
+
+  #bgVideo {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+  }
+}
+
+.news-hero {
+  h1 {
+    color: #444;
+    text-align: center;
+    font-style: normal;
+    font-weight: 300;
+    @apply text-[32px] leading-1 xl:text-[45px] 2xl:text-[55px] text-left my-30 lg:my-45 xl:mt-72 xl:mb-67;
+  }
+
+  img {
+    @apply w-full h-auto object-cover object-center;
+    &.image-mobile {
+      @apply block md:hidden min-h-[250px];
+    } 
+    &.image-desktop {
+      @apply hidden md:block xl:min-h-[386px] max-h-[450px];
+    }
+  }
+
+  .video-container {
+    @apply relative w-full h-auto min-h-[250px] md:min-h-[350px] xl:min-h-[386px];
+  }
+
+  #bgVideo {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+  }
+}
+
+.post-list {
+  @apply grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-25 gap-y-45 xl:gap-y-80 mb-50 xl:mb-111;
+
+  &__entry {
+
+    .meta {
+      @apply py-16 px-22 flex items-center gap-11 mb-13;
+      border-top: 1px solid #CCC;
+
+      border-right: 1px solid #CCC;
+
+      border-left: 1px solid #CCC;
+
+      span {
+        color: #333;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1;
+        @apply translate-y-2;
+      }
+    }
+    h2 {
+      color: #444;
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 27px; 
+    }
+
+    figure {
+      @apply mb-26;
+
+      img {
+        @apply  aspect-[463/299] object-cover object-center w-full h-auto;
+      }
+    }
+
+    
+  }
+
+  &__excerpt {
+    p {
+      @apply last:mb-0;
+    }
+  }
+
+  .btn-pb {
+    @apply mt-26;
+  }
+}
+
+.pagination {
+  @apply w-full flex items-center justify-between mb-66 xl:mb-84;
+
+
+  a {
+    @apply flex items-center gap-15 transition duration-300 hover:gap-20;
+    transition: all 0.3s ease-in-out;
+    color: #444;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 27px;
+    text-decoration: underline;
+  }
+
+  .older {
+    @apply mr-auto;
+  }
+  .newer {
+    @apply ml-auto;
+    a {
+      
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+.site-page + .benefits-block {
+  @apply xl:mt-84;
+}
+
+.products-page + .benefits-block {
+  @apply mt-8 md:mt-18;
+}
+
+.benefits-404 {
+  margin-top: 0 !important
+}
+.products-container {
+  @apply  w-full max-w-[1640px];
+}
+
+.error-404-hero {
+  img {
+      @apply w-full h-auto object-cover object-center;
+      &.image-mobile {
+        @apply block md:hidden min-h-[150px];
+      } 
+      &.image-desktop {
+        @apply hidden md:block max-h-[300px] xl:max-h-[386px];
+      }
+    }
+}
+
+.error-404 {
+  h1 {
+    @apply font-normal mb-10 xl:mb-24 xl:text-[54px] leading-[normal];
+    b {
+      font-weight: 600 !important;
+    }
+  }
+
+  @apply text-center ;
+  article {
+    @apply flex flex-col items-center;
+  }
+  p {
+    @apply last:mb-0;
+  }
+
+  &--links {
+    @apply flex flex-col gap-19 mt-30 lg:mt-33 md:flex-row w-full max-w-[715px] md:justify-center;
+
+  }
+}

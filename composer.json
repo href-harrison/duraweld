@@ -1,0 +1,13 @@
+{
+    "name": "href-agency/tailwind-href-starter",
+    "description": "ACF PRO in a WordPress site",
+    "repositories": [
+        {
+            "type":"composer",
+            "url":"https://connect.advancedcustomfields.com"
+        }
+    ],
+    "require": {
+        "wpengine/advanced-custom-fields-pro": "^6.0"
+    }
+}

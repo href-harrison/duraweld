@@ -1,0 +1,40 @@
+.logo-carousel {
+    @apply mb-66 xl:mb-87;
+    .site-container {
+        @apply overflow-hidden;
+    }
+
+    h2 {
+        color: #444;
+        text-align: center;
+        font-size: 27px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 35px; /* 129.63% */
+        letter-spacing: 5.4px;
+        text-transform: uppercase;
+        @apply mb-52 xl:mb-34;
+    }
+
+    .logos-pagination {
+        position: relative;
+        top: unset;
+        bottom: unset;
+        @apply mt-38 xl:mt-40;
+        .swiper-pagination-bullet {
+            font-size: 16px;
+            line-height: 1;
+            height: 16px;
+            width: 16px;
+            background-color: #ECECEC;
+            opacity: 1;
+            &-active {
+                background-color: #FBB034;
+            }
+        }
+    }
+
+    .swiper-slide {
+        @apply flex items-center justify-center h-auto;
+    }
+}

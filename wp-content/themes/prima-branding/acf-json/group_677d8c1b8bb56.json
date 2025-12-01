@@ -1,0 +1,53 @@
+{
+    "key": "group_677d8c1b8bb56",
+    "title": "Single case study options",
+    "fields": [
+        {
+            "key": "field_677d8c1b87deb",
+            "label": "Excerpt alternative",
+            "name": "excerpt_alternative",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "Use this field for a longer excerpt style description with more text formatting options.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "case-study"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1736281444
+}

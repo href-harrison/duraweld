@@ -1,0 +1,165 @@
+.site-footer {
+    @apply pt-40 pb-[269px] xl:pt-74 relative xl:pb-24;
+    background: rgba(190, 185, 137, 0.17);
+
+    p {
+        color: #444;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 27px;
+        @apply last:mb-0;
+    }
+
+    h5 {
+        color: #444;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 27px;
+    }
+
+    a, span {
+        color: #444;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 27px;
+    }
+
+    a[href^="mailto:"] {
+        text-decoration: underline;
+    }
+
+    .footer-sm {
+        @apply flex items-center gap-19 mt-32;
+        &--mobile {
+            @apply flex xl:hidden;
+        }
+        &--desktop {
+            @apply hidden xl:flex xl:mt-0;
+        }
+    }
+
+    .footer-column {
+        @apply mb-19 first:mb-45 last:mb-35 md:mb-0 md:first:mb-0 md:last:mb-0;
+
+        ul {
+            li {
+                @apply relative flex items-center gap-15;
+
+                &:before {
+                    @apply inline-block;
+                    content: '›';
+                }
+
+                a {
+                    @apply underline;
+
+                    color: #444;
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 33px;
+                }
+            }
+        }
+    }
+
+    &__top {
+        @apply md:grid md:grid-cols-2 md:gap-y-45 xl:grid-cols-4 xl:gap-x-15 2xl:gap-20 md:mb-45;
+        .contact-ctas {
+            .footer-cta {
+                &:first-child {
+                    @apply mt-30;
+                }
+                span {
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+
+    .footer-shape {
+        @apply absolute bottom-0 left-0 xl:hidden;
+        &-desktop {
+            @apply hidden xl:block xl:absolute xl:bottom-0 xl:right-100;
+        }
+    }
+
+
+
+    &__bottom {
+        p.copyrights {
+            color: #444;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 35px;
+            @apply mb-0;
+        }
+
+        .info-container {
+            @apply flex flex-col md:flex-row md:flex-wrap md:gap-5;
+            a {
+                color: #444;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 35px;
+                text-decoration-line: underline;
+            }
+        }
+
+        .privacy-links {
+            @apply flex items-center gap-5;
+            
+        }
+        .separator {
+            @apply hidden md:block;
+        }
+
+        .separator-info {
+            @apply hidden xl:block;
+        }
+    }
+
+    
+
+    .company-info {
+        @apply mt-30 xl:mt-10;
+        
+        br {
+            @apply md:hidden;
+        }
+
+        p {
+            color: #444;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 25px;
+        }
+    }
+
+    .duraweld-links {
+        @apply flex items-center gap-15 mt-40 xl:mt-56;
+        a {
+            font-weight: 500;
+        }
+    }
+}
+
+
+.popup-overlay {
+    @apply fixed inset-0 h-screen w-screen;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.88);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.5s ease-in-out;
+    &.active {
+        opacity: 1;
+        pointer-events: all;
+    }
+}

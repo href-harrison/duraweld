@@ -1,0 +1,142 @@
+.newsletter-signup {
+    @apply pt-40 pb-52 bg-[#E5E2D7] lg:pt-31 lg:pb-36;
+    .site-container {
+        @apply flex flex-col xl:flex-row xl:items-center gap-34 lg:gap-20 lg:items-start max-w-[1240px] 2xl:max-w-[1440px];
+
+        
+    }
+    h3 {
+        color: #444;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 27px;
+        letter-spacing: 2.2px;
+        text-transform: uppercase;
+        @apply text-center lg:text-left 2xl:w-fit 2xl:text-[24px] 2xl:leading-[35px];
+        strong, b {
+            font-weight: 600 !important;
+        }
+        @media screen and (min-width: 1280px) and (max-width: 1450px) {
+            font-size: 18px;
+        }
+    }
+    
+    .gform_wrapper {
+        @apply lg:w-full xl:w-[60%];
+        .gform_anchor {
+            display: none;
+        }
+        .gform_footer {
+            @apply lg:w-[30%] relative xl:max-w-[171px];
+            margin: 0 !important;
+            padding: 0 !important;
+            // &:after {
+            //     position: absolute;
+            //     top: 50%;
+            //     right:17px;
+            //     transform: translateY(-50%);
+            //     content: '';
+            //     background-image: url('../arrow.svg');
+            //     @apply  w-20 h-18;
+            //     background-size: contain;
+            //     background-repeat: no-repeat;
+            //     background-position: center;
+
+            // }
+            button {
+                border-radius: 0 !important;
+                background-color: #FFC60B !important;
+                margin-top: 0 !important;
+                color: #000 !important;
+                text-align: left !important;
+                font-size: 24px !important;
+                font-style: normal !important;
+                font-weight: 300 !important;
+                line-height: 27px !important;
+                width: 100% !important;
+                display: flex !important;
+                height: 52px !important;
+                max-width: unset !important;
+                justify-content: space-between !important;
+                // clip-path: polygon(
+                // 100% 0, 
+                // 100% calc(100% - 12px), 
+                // calc(100% - 12px) 100%, 
+                // 0 100%, 
+                // 0 0
+                // ) !important;
+                transition: all 0.3s ease-in-out !important;
+                @apply  relative;
+                @media screen and (min-width: 1600px) {
+                    font-size: 24px !important;
+                }
+                
+            }
+            // @media screen and (min-width: 1280px) {
+            //     max-width: 199px !important;
+            // }
+        }
+        .gform_validation_errors {
+            
+            .gform_submission_error  {
+                
+            }
+        }
+        .gform_heading {
+            display: none !important;
+        }
+        form {
+            @apply flex flex-col lg:flex-row lg:gap-15 xl:w-full;
+            
+            .gform_body {
+                @apply mb-14 lg:mb-0 lg:w-[70%] xl:flex-grow;
+                
+                .gform_fields {
+                    @apply gap-y-15 xl:gap-y-0;
+                    .gfield {
+                        
+                        label {
+                            
+                        }
+                        input {
+                            color: #444;
+                            border-radius: 0;
+                            font-size: 20px;
+                            font-style: normal;
+                            font-weight: 400;
+                            line-height: 1 !important;
+                            &::placeholder {
+                                color: #444;
+
+                                font-size: 20px;
+                                font-style: normal;
+                                font-weight: 400;
+                                line-height: 1 !important;
+                            }
+                            &[type=text],
+                            &[type=email] {
+                                @apply h-52 xl:h-fit xl:pt-15 xl:pb-15;
+                                border: 1px solid #939598 !important;
+                            }
+                        }
+                        &_error {
+                            label {
+                                
+                            }
+                            input {
+                                
+                            }
+                            .validation_message  {
+                                
+                            }
+                        }
+                    }
+                    .gfield_contains_required  {
+    
+                    }
+                }
+            }
+        }
+    }
+}

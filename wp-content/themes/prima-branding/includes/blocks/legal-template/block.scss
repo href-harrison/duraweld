@@ -1,0 +1,25 @@
+.legal-template {
+    @apply my-50 lg:my-75 xl:mt-98 xl:mb-72;
+    h1 {
+        @apply mb-20 xl:mb-24 text-[35px] xl:text-[45px] 2xl:text-[55px] leading-1;
+    }
+
+    h4 {
+        color: #444;
+        font-style: normal;
+        font-weight: 600;
+        @apply text-[18px] lg:text-[20px] leading-[25px] lg:leading-[27px];
+    }
+
+    p {
+        @apply xl:mb-35 last:mb-0;
+    }
+
+    li {
+        @apply mb-17;
+    }
+
+    ul {
+        @apply mb-20 xl:mb-36;
+    }
+}

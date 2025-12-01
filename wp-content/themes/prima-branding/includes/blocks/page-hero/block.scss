@@ -1,0 +1,24 @@
+.page-hero {
+    
+      img {
+        @apply w-full h-auto object-cover object-center;
+        &.image-mobile {
+          @apply block md:hidden min-h-[350px];
+        } 
+        &.image-desktop {
+          @apply hidden md:block xl:min-h-[586px] max-h-[768px];
+        }
+      }
+    
+      .video-container {
+        @apply relative w-full h-auto min-h-[350px] md:min-h-[350px] xl:min-h-[768px];
+      }
+    
+      #bgVideo {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+      }
+}

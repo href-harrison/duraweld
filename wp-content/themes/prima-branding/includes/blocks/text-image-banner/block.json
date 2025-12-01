@@ -1,0 +1,25 @@
+{
+    "name": "acf/text-image-banner",
+    "title": "Text Image Banner",
+    "description": "Image Text Banner Section",
+    "category": "theme",
+    "apiVersion": 2,
+    "example": {
+        "attributes": {
+            "data": {
+                "preview-screenshot": "block-preview.png"
+            },
+            "mode": "preview"
+        }
+    },
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "includes/blocks/text-image-banner/block.php"
+    },
+    "style": "file:./dist/block.min.css",
+    "supports": {
+        "anchor": true, 
+        "mode": true,
+        "align": false
+    }
+}

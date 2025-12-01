@@ -1,0 +1,44 @@
+.case-study-relation {
+    @apply py-50 lg:py-75 xl:pt-88 xl:pb-96;
+    h3 {
+        color: #444;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 1;
+        @apply text-[27px] xl:text-[32px] 2xl:text-[42px] mb-24 xl:mb-30;
+    }
+
+    .cases-grid {
+        @apply grid grid-cols-1 lg:grid-cols-3 gap-30 lg:gap-x-20;
+    }
+}
+
+.single-case-tile {
+    @apply flex flex-col;
+    img {
+        @apply aspect-video 2xl:aspect-[467/294] mb-20 xl:mb-36 w-full;
+    }
+
+    h4 {
+        color: #444;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 27px;
+        @apply text-[20px] lg:text-[22px];
+    }
+
+    .excerpt {
+        @apply mb-24 xl:mb-33;
+    }
+
+    p {
+        @apply mb-20 xl:mb-27 last:mb-0;
+        &:last-of-type {
+            @apply mb-0;
+        }
+    }
+
+    .btn-pb {
+        @apply mt-auto;
+    }
+}

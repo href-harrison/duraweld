@@ -1,0 +1,11 @@
+.contact-hero {
+    img {
+        @apply w-full h-auto object-cover object-center;
+        &.image-mobile {
+          @apply block md:hidden min-h-[350px];
+        } 
+        &.image-desktop {
+          @apply hidden md:block max-h-[386px];
+        }
+      }
+}

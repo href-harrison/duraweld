@@ -1,0 +1,22 @@
+.map {
+
+    @apply mt-50 xl:mt-75;
+
+    h3 {
+        color: #444;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        @apply text-[20px] lg:text-[22px] 2xl:text-[28px] mb-20 xl:mb-32 flex items-center gap-10 lg:gap-15 2xl:gap-21;
+    }
+
+    .map-container,
+    iframe {
+        @apply min-h-[350px] lg:min-h-[511px];
+    }
+
+    & + .benefits-block {
+        @apply mt-0;
+    }
+}

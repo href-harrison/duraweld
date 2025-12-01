@@ -1,0 +1,29 @@
+.fw-media {
+    @apply bg-[#F7F6FB];
+
+    &.model-3d {
+        @apply py-50 lg:py-100 2xl:pt-110 2xl:pb-130;
+    }
+
+    img {
+        @apply w-full h-auto object-cover object-center;
+        &.mobile-image {
+            @apply block md:hidden;
+        }
+        &.desktop-image {
+            @apply hidden md:block;
+        }
+    }
+
+    .site-container {
+        @apply relative;
+        .handle-icon {
+            @apply absolute top-0 left-0 lg:-top-30 2xl:-top-45;
+            @media screen and (max-width: 450px) {
+                width: 67px;
+                height: 63px;
+            }
+        }
+        
+    }
+}

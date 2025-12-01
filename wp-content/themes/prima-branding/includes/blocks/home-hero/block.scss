@@ -1,0 +1,94 @@
+.home-hero {
+    background-color: rgba(190, 185, 137, 0.169);
+    .site-container {
+        @apply w-full max-w-[unset] grid grid-cols-1 md:grid-cols-2 2xl:min-h-[706px] relative;
+
+        .shape {
+            @apply hidden md:block absolute -bottom-1 left-1/2 -translate-x-1/2;
+            z-index: 10;
+        }
+        @media screen and (min-width: 450px) and (max-width: 767px) {
+            @apply gap-70;
+            .home-hero--right {
+                img {
+                    max-height: 400px;
+                    object-fit: contain;
+                }
+            }
+        }
+    }
+    &--left {
+        
+        @apply px-20 pt-58 pb-69 lg:pt-100 lg:pb-120 xl:px-50 xl:pt-150 xl:pb-180 2xl:pt-183; 
+        z-index: 10;
+        @media screen and (min-width: 1400px) {
+            @apply pl-90;
+        }
+        @media screen and (min-width: 1600px) {
+            @apply pl-96;
+            
+        }
+        @media screen and (min-width: 1900px) {
+            @apply flex justify-end pr-138;
+        }
+    }
+
+    &--right {
+        @apply relative min-h-[220px] sm:min-h-[258px];
+        background: #858777;
+
+        img {
+            @apply absolute bottom-8 left-0 sm:left-9 md:-left-50 xl:-bottom-11 xl:-left-80 2xl:-left-120; 
+            z-index: 10;
+            @media screen and (max-width: 450px) {
+                @apply left-0;
+            }
+            &.mobile-image {
+                @apply block md:hidden h-auto;
+                width: calc(100% + 8px);
+            }
+            &.desktop-image {
+                @apply hidden md:block;
+                width: calc(100% + 65px);
+                max-width: unset;
+                @media screen and (min-width: 1024px) {
+                    width: calc(100% + 100px);
+                }
+                @media screen and (min-width: 1400px) {
+                    width: calc(100% + 180px);
+                    left: -120px;
+                    pointer-events: none;
+                }
+                @media screen and (min-width: 1600px) {
+                    width: calc(100% + 289px);
+                    left: -150px;
+                    pointer-events: none;
+                    @apply max-h-[756px] max-w-[1109px];
+                }
+                
+            }
+        }
+    }
+
+    h1 {
+        @media screen and (max-width: 450px) {
+            font-size: 51px;
+            line-height: 55px;
+        }
+        @media screen and (max-width: 400px) {
+            font-size: 44px;
+            line-height: 49px;
+        }
+        @media screen and (min-width: 768px) and (max-width: 1020px) {
+            font-size: 40px;
+        }
+    }
+
+    .btn-pb {
+        @apply mt-30 lg:mt-45 2xl:mt-64;
+    }
+
+    .text {
+        @apply max-w-[588px];
+    }
+}

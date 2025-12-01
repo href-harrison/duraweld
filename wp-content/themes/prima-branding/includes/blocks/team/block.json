@@ -1,0 +1,25 @@
+{
+    "name": "acf/team",
+    "title": "Team",
+    "description": "Team section",
+    "category": "theme",
+    "apiVersion": 2,
+    "example": {
+        "attributes": {
+            "data": {
+                "preview-screenshot": "block-preview.png"
+            },
+            "mode": "preview"
+        }
+    },
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "includes/blocks/team/block.php"
+    },
+    "style": "file:./dist/block.min.css",
+    "supports": {
+        "anchor": true, 
+        "mode": true,
+        "align": false
+    }
+}

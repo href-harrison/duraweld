@@ -1,0 +1,27 @@
+/*
+ Fluid type mixin, essentially clamp() but with full browser support.
+ Allows fonts to resize on window resize to a minimum and maximum size.
+*/
+
+@mixin fluid-type(
+  $min-font-size: 1.3rem,
+  $max-font-size: 2.2rem,
+  $lower-range: 540px,
+  $upper-range: 960px
+) {
+  font-size: calc(
+    #{$min-font-size} + #{(
+        ($max-font-size / ($max-font-size * 0 + 1)) -
+          ($min-font-size / ($min-font-size * 0 + 1))
+      )} * ((100vw - #{$lower-range}) / #{(
+            ($upper-range / ($upper-range * 0 + 1)) -
+              ($lower-range / ($lower-range * 0 + 1))
+          )})
+  );
+  @media screen and (max-width: $lower-range) {
+    font-size: $min-font-size;
+  }
+  @media screen and (min-width: $upper-range) {
+    font-size: $max-font-size;
+  }
+}

@@ -1,0 +1,27 @@
+.basic-example-accordion {
+    .site-container {
+        .accordions {
+            &__single {
+                &--heading {
+
+                }
+                &--content {
+                    * {
+
+                    }
+                    ul, ol {
+                        li {
+
+                        }
+                    }
+                    *:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+                &.active {
+
+                }
+            }
+        }
+    }
+}

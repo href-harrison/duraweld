@@ -1,0 +1,104 @@
+.quote-relation {
+    background: #858777;
+    color: #FFF;
+    @apply pt-48 2xl:pt-0 relative;
+    .site-container {
+        @apply relative lg:flex lg:flex-row-reverse lg:justify-between 2xl:gap-23;
+    }
+    @media screen and (min-width: 1440px) {
+        &:before {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100vw;
+            height: 29px;
+            content: '';
+            background-color: #F7F6FB;
+        }
+    }
+    h2 {
+        color: #FFF;
+        font-style: normal;
+        font-weight: 400;
+        // line-height: 27px; 
+        @apply font-yellowtail leading-1 text-[57px] mb-20 2xl:text-[66px];
+    }
+
+    h5 {
+        color: #FFF;
+        font-size: 27px;
+        font-style: normal;
+        font-weight: 400;
+        letter-spacing: 5.4px;
+        text-transform: uppercase;
+        @apply text-[27px] leading-[129.63%] block relative w-fit pb-2 mb-30 xl:mb-20;
+        &:after {
+            @apply absolute bottom-0 right-0 w-[calc(100%+23px)] h-1;
+            content: '';
+            background-color: #FBB034;
+            @media screen and (min-width: 1440px) {
+                width: calc(100% + 111px);
+            }
+        }
+    }
+
+    .images {
+        background-image: url('../quote-shape.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: 10;
+        @apply mt-30 lg:mt-0 lg:w-[40%] xl:max-w-[384px] 2xl:flex items-end;
+        @media screen and (max-width: 770px) {
+            max-width: 289px;
+            @apply mx-auto;
+        }
+        @media screen and (min-width: 1640px) {
+            background-size: 384px 436px;
+            background-position: bottom;
+        }
+
+        img {
+            @apply lg:h-full object-cover xl:mx-auto 2xl:h-[507px];
+        }
+    }
+
+    .text {
+        @apply w-full flex flex-col gap-48 lg:pb-50 lg:w-[55%] xl:flex-row xl:w-[65%] 2xl:pt-118 2xl:w-[71%] 2xl:pb-94 2xl:items-end;
+        @media screen and (min-width: 1280px) {
+            .text--intro {
+                @apply w-[55%] 2xl:w-[70%] 2xl:max-w-[535px];
+            }
+
+            .quote {
+                @apply w-[45%];
+            }
+        }
+    }
+
+    .btn-pb {
+        @apply mt-20;
+    }
+
+    .quote {
+        @apply flex gap-12 2xl:max-w-[410px];
+
+        p {
+            color: #FFF;
+            font-size: 28px;
+            font-style: italic;
+            font-weight: 200;
+            line-height: 35px; 
+            @apply mb-17;
+        }
+    }
+
+    span {
+        color: #FFF;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 27px;
+        @apply first:font-medium ;
+    }
+}

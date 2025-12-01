@@ -1,0 +1,163 @@
+.team {
+    @apply bg-[#858777] text-[#fff] py-50 lg:py-75 xl:py-105 mb-50 xl:mb-88;
+
+    .featured-post {
+        figure {
+            @apply w-full lg:w-1/2 float-left lg:mr-30 2xl:mr-59 mb-20 2xl:mb-38 relative xl:max-w-[668px];
+            z-index: 10;
+            .featured-tag {
+                @apply bg-[#444444] absolute bottom-0 left-0 py-17 px-25 2xl:min-w-[297px];
+                span {
+                    color: #FFC60B;
+                    font-style: normal;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                    @apply text-[18px] xl:text-[21px] leading-[142.857%];
+                }
+                font-style: normal;
+                font-weight: 400;
+                @apply text-[18px] xl:text-[21px] leading-[142.857%];
+            }
+
+            img {
+                @apply w-full h-auto object-cover object-center;
+                &.desktop-image {
+                    @apply hidden md:block;
+                }
+                &.mobile-image {
+                    @apply block md:hidden;
+                }
+
+            }
+        }
+    }
+
+    h2 {
+        color: #FFF;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 1.2;
+
+        @apply text-[32px] lg:text-[40px] xl:text-[50px] 2xl:text-[55px]  mb-0;
+        &.title {
+            @apply mb-30 xl:mb-45 2xl:mb-65;
+        }
+    }
+
+    h4 {
+        font-size: 34px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 50px;
+        @apply mb-0 text-[27px] leading-[32px] xl:text-[32px] xl:leading-[45px] 2xl:text-[34px] 2xl:leading-[50px];
+    }
+
+    .header {
+        @apply mb-30 xl:mb-33;
+    }
+
+    .team-grid {
+        @apply mt-50 xl:mt-75 2xl:mt-100 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-30 md:gap-y-45 xl:gap-60;;
+    }
+
+    .single-team-member {
+        @apply cursor-pointer;
+        figure {
+            @apply relative mb-20 xl:mb-30 overflow-hidden;
+        }
+        
+        img {
+            @apply w-full h-auto object-cover object-center;
+            transition: all 0.3s ease-in-out;
+            &.desktop-image {
+                @apply hidden md:block;
+            }
+            &.mobile-image {
+                @apply block md:hidden;
+            }
+            &.popup-handle {
+                @apply absolute h-39 w-39 top-11 right-22;
+                z-index: 10;
+            }
+            
+        }
+        &:hover {
+            img {
+                
+                    transform: scale(1.05);
+                
+            }
+        }
+
+        h3 {
+            color: #FFF;
+            font-style: normal;
+            font-weight: 300;
+            line-height: 1;
+
+            @apply text-[24px] lg:text-[27px] xl:text-[31px];
+        }
+
+        p {
+            @apply mb-0 font-medium;
+        }
+
+        
+    }
+    .popup-container {
+        @apply fixed top-[35%] md:top-[45%] xl:top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-fit max-h-[60%] max-w-[924px] ;
+        z-index: 101;
+        margin-top: 10px;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.5s ease-in-out;
+        position: fixed !important;
+        &.active {
+            pointer-events: all;
+            margin-top: 0;
+            opacity: 1;
+        }
+    }
+    .popup-content {
+        @apply w-full overflow-y-auto bg-[#fff]  block px-20 py-30 xl:pt-48 xl:pb-57 xl:px-45;
+        @media screen and (max-width: 1050px) {
+            max-height: 720px;
+        }
+
+        @media screen and (max-width: 450px) {
+            max-height: 550px;
+        }
+        @media screen and (max-width: 380px) {
+            max-height: 500px;
+        }
+        
+        
+        color: #444;
+        h2 {
+            color: #444;
+        }
+        figure {
+            @apply w-full md:w-1/2 float-left xl:w-1/3 md:mr-30 2xl:mr-62 mb-20 2xl:mb-25 relative xl:max-w-[274px];
+            z-index: 10;
+           
+
+            img {
+                @apply w-full h-auto object-cover object-center;
+                &.desktop-image {
+                    @apply hidden md:block;
+                }
+                &.mobile-image {
+                    @apply block md:hidden;
+                }
+                &.inner-icon {
+                    @apply w-50 h-auto absolute bottom-11 left-5;
+                }
+            }
+        }
+
+        .close-popup {
+            @apply absolute -top-15 -right-15 h-45 w-45 flex items-center justify-center rounded-full bg-[#444444] xl:-right-34 xl:-top-34 xl:h-68 xl:w-68 cursor-pointer;
+            z-index: 11;
+        }
+    }
+}

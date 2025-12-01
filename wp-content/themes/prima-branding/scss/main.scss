@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Vendor packages
+@import "vendor/glightbox.min.css"; // This is a manually placed vendor package.
+@import "vendor/plyr.min.css"; // This is a manually placed vendor package.
+@import "vendor/aos.css"; // This is a manually placed vendor package.
+@import "swiper/css/bundle";
+
+// Variables & mixins
+@import "core/**/*.scss";
+
+// General styles
+@import "general/**/*.scss";
+
+// Global styles
+@import "global/**/*.scss";
+
+// Components styles
+@import "components/**/*.scss";
+
+// Block styles
+@import "blocks/**/*.scss";
