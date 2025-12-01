@@ -6,3 +6,32 @@ auth.json
 .ddev
 wp-config-ddev.php
 wp-content/db.php
+
+
+# WordPress cache and upgrade files
+wp-content/cache/
+wp-content/upgrade/
+wp-content/backup-db/
+wp-content/backups/
+wp-content/advanced-cache.php
+wp-content/wp-cache-config.php
+
+# WordPress debug and log files
+wp-content/debug.log
+*.log
+
+# Security plugin logs
+wp-content/wflogs/
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
