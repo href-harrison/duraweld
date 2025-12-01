@@ -5,13 +5,25 @@
 
 /**
  * This is an argument that we provide to the render template
+ * ACF provides block data in $block['data'], use that to avoid duplicate rendering
  */
+// Get field values - ACF blocks provide data in $block['data']
+// Only use get_field as fallback if block data is not available
 $data = array(
-	'header' => get_field('header') ?? false,
-	'link' => get_field('link') ?? false,
-	'image' => get_field('image') ?? false,
-	'mobile_image' => get_field('mobile_image') ?? false,
+	'variant' => $block['data']['variant'] ?? 'default',
+	'header' => $block['data']['header'] ?? false,
+	'link' => $block['data']['link'] ?? false,
+	'image' => $block['data']['image'] ?? false,
+	'mobile_image' => $block['data']['mobile_image'] ?? false,
 );
+
+// Ensure images are arrays if they're IDs
+if (!empty($data['image']) && is_numeric($data['image'])) {
+	$data['image'] = acf_get_attachment($data['image']);
+}
+if (!empty($data['mobile_image']) && is_numeric($data['mobile_image'])) {
+	$data['mobile_image'] = acf_get_attachment($data['mobile_image']);
+}
 
 
 
@@ -47,6 +59,12 @@ if(!empty($block['backgroundColor'])) {
 	$class_name .= ' has-bg bg-colour-' . $block['backgroundColor'];
 }
 
+// Add variant class
+$variant = $data['variant'] ?? 'default';
+if ($variant === 'image-only') {
+	$class_name .= ' home-hero--image-only';
+}
+
 
 /**
  * Conditional to render block screenshot 
@@ -59,17 +77,26 @@ if ($screenshot_url = $block['data']['preview-screenshot'] ?? false) {
 	/** 
 	 * Pass the block data into the template part, we include the block template as a template part,
 	 * this means we can use the block elsewhere by adding different information.
+	 * 
+	 * Use static variable to prevent double rendering
 	 */
-	get_template_part(
-		"includes/blocks/" . $block_directory_name . "/template",
-		null,
-		array(
-			'block' => $block,
-			'is_preview' => $is_preview,
-			'post_id' => $post_id,
-			'data' => $data,
-			'class_name' => $class_name,
-			'block_id' => $block_id,
-		)
-	);
+	static $rendered_blocks = array();
+	$render_key = $block['id'] ?? uniqid();
+	
+	if (!isset($rendered_blocks[$render_key])) {
+		$rendered_blocks[$render_key] = true;
+		
+		get_template_part(
+			"includes/blocks/" . $block_directory_name . "/template",
+			null,
+			array(
+				'block' => $block,
+				'is_preview' => $is_preview,
+				'post_id' => $post_id,
+				'data' => $data,
+				'class_name' => $class_name,
+				'block_id' => $block_id,
+			)
+		);
+	}
 }

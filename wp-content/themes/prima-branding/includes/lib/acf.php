@@ -83,3 +83,12 @@ if (function_exists('acf_add_options_page')) {
     'redirect' => false
   ]);
 }
+
+/**
+ * Ensure ACF JSON is loaded from theme directory
+ * This ensures post types, taxonomies, and field groups load from acf-json folder
+ */
+add_filter('acf/settings/load_json', function($paths) {
+  $paths[] = get_stylesheet_directory() . '/acf-json';
+  return $paths;
+});

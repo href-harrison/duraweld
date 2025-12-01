@@ -1,5 +1,8 @@
 .home-hero {
     background-color: rgba(190, 185, 137, 0.169);
+    margin-top: 40px;
+    padding-top: 0;
+    
     .site-container {
         @apply w-full max-w-[unset] grid grid-cols-1 md:grid-cols-2 2xl:min-h-[706px] relative;
 
@@ -90,5 +93,182 @@
 
     .text {
         @apply max-w-[588px];
+    }
+
+    // Image-only variant styles
+    &.home-hero--image-only {
+        background-color: transparent !important;
+        margin-top: 40px !important;
+        padding-top: 0 !important;
+        padding-right: 0 !important;
+        padding-bottom: 0 !important;
+        padding-left: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        
+        // Override default image styles
+        .home-hero--right {
+            display: none !important;
+        }
+        
+        .home-hero--image-wrapper {
+            position: relative;
+            width: 100vw;
+            max-width: 100vw;
+            margin-left: calc(50% - 50vw);
+            margin-right: calc(50% - 50vw);
+            left: 0;
+            right: 0;
+            display: block;
+            overflow: hidden;
+            height: 557px;
+            max-height: 557px;
+            
+            img {
+                width: 100% !important;
+                max-width: 100% !important;
+                object-fit: cover !important;
+                object-position: center !important;
+                position: relative !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                left: auto !important;
+                bottom: auto !important;
+                top: auto !important;
+                right: auto !important;
+                z-index: 1;
+            }
+            
+            img.mobile-image {
+                display: block !important;
+                height: auto !important;
+                max-height: none !important;
+                
+                @media (min-width: 768px) {
+                    display: none !important;
+                    visibility: hidden !important;
+                    opacity: 0 !important;
+                    height: 0 !important;
+                    width: 0 !important;
+                    overflow: hidden !important;
+                }
+            }
+            
+            img.desktop-image {
+                display: none !important;
+                height: 557px !important;
+                max-height: 557px !important;
+                
+                @media (min-width: 768px) {
+                    display: block !important;
+                    visibility: visible !important;
+                    opacity: 1 !important;
+                    width: 100% !important;
+                    max-width: 100% !important;
+                    height: 557px !important;
+                    max-height: 557px !important;
+                    object-fit: cover !important;
+                    object-position: center !important;
+                }
+            }
+        }
+    }
+}
+
+// Additional explicit selector for image-only variant to ensure it compiles
+.home-hero.home-hero--image-only .home-hero--image-wrapper {
+    height: 557px !important;
+    max-height: 557px !important;
+    overflow: hidden;
+    
+    img.mobile-image {
+        display: block;
+        
+        @media (min-width: 768px) {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            height: 0 !important;
+            width: 0 !important;
+            overflow: hidden !important;
+            position: absolute !important;
+            pointer-events: none !important;
+        }
+    }
+    
+    img.desktop-image {
+        display: none;
+        height: 557px;
+        max-height: 557px;
+        
+        @media (min-width: 768px) {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            height: 557px !important;
+            max-height: 557px !important;
+            object-fit: cover !important;
+            object-position: center !important;
+        }
+    }
+}
+
+// Even more specific selector to override any conflicting styles
+section.home-hero.home-hero--image-only .home-hero--image-wrapper img.mobile-image {
+    @media (min-width: 768px) {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        height: 0 !important;
+        width: 0 !important;
+        overflow: hidden !important;
+        position: absolute !important;
+        pointer-events: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+}
+
+section.home-hero.home-hero--image-only .home-hero--image-wrapper {
+    height: 557px !important;
+    max-height: 557px !important;
+    
+    img.desktop-image {
+        @media (min-width: 768px) {
+            display: block !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            height: 557px !important;
+            max-height: 557px !important;
+            object-fit: cover !important;
+            object-position: center !important;
+        }
+    }
+}
+
+// Ultra-specific selectors to force compilation and override everything
+.home-hero--image-only .home-hero--image-wrapper img.mobile-image {
+    @media screen and (min-width: 768px) {
+        display: none !important;
+    }
+}
+
+.home-hero--image-only .home-hero--image-wrapper {
+    @media screen and (min-width: 768px) {
+        height: 557px !important;
+        max-height: 557px !important;
+    }
+    
+    img.desktop-image {
+        @media screen and (min-width: 768px) {
+            display: block !important;
+            height: 557px !important;
+            max-height: 557px !important;
+            width: 100% !important;
+        }
     }
 }

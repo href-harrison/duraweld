@@ -10,11 +10,22 @@
                 $block_name = $fileinfo->getFilename();
             
                 $block_json_file = "$block_directory/$block_name/block.json";
+                
+                // Check if block is already registered to prevent duplicates
+                if (WP_Block_Type_Registry::get_instance()->is_registered("acf/$block_name")) {
+                    continue;
+                }
+                
+                // Check if block.json exists
+                if (!file_exists($block_json_file)) {
+                    continue;
+                }
+                
                 wp_register_script(
                     "$block_name-scripts",
                     "$block_url/$block_name/dist/block.js",
                     [],
-                    filemtime("$block_directory/$block_name/dist/block.js"),
+                    file_exists("$block_directory/$block_name/dist/block.js") ? filemtime("$block_directory/$block_name/dist/block.js") : '1.0.0',
                     true
                 );
                 $new_block = register_block_type($block_json_file, [
@@ -31,7 +42,7 @@
         }
     }
 
-    add_action('init', 'registerBlockTypes');
+    add_action('init', 'registerBlockTypes', 20);
 
     /**
      * Load global Tailwind classes and container styles etc

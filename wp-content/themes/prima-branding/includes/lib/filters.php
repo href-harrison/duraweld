@@ -9,6 +9,44 @@ add_filter('mce_buttons', 'wysiwyg_add_formats_select');
 add_filter('tiny_mce_before_init', 'wysiwyg_custom_formats');
 // add_filter( 'load_separate_block_styles', '__return_true' );
 
+/**
+ * Allow SVG and other file types for uploads
+ * This is especially important during imports
+ */
+add_filter('upload_mimes', function($mimes) {
+	// Allow SVG files
+	$mimes['svg'] = 'image/svg+xml';
+	$mimes['svgz'] = 'image/svg+xml';
+	
+	// Allow other common file types that might be needed
+	$mimes['webp'] = 'image/webp';
+	$mimes['ico'] = 'image/x-icon';
+	$mimes['webm'] = 'video/webm';
+	$mimes['mp4'] = 'video/mp4';
+	$mimes['mov'] = 'video/quicktime';
+	$mimes['pdf'] = 'application/pdf';
+	
+	return $mimes;
+}, 10, 1);
+
+/**
+ * Fix MIME type detection for SVG files during upload/import
+ */
+add_filter('wp_check_filetype_and_ext', function($data, $file, $filename, $mimes) {
+	$filetype = wp_check_filetype($filename, $mimes);
+	
+	// Fix SVG detection
+	if ($filetype['ext'] === 'svg' || $filetype['ext'] === 'svgz') {
+		$data = array(
+			'ext' => $filetype['ext'],
+			'type' => 'image/svg+xml',
+			'proper_filename' => $filename
+		);
+	}
+	
+	return $data;
+}, 10, 4);
+
 
 function input_to_button( $button, $form ) {
     $fragment = WP_HTML_Processor::create_fragment( $button );

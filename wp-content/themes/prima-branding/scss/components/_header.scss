@@ -1,24 +1,66 @@
 .site-header {
-    background: #EFECE1;
-    @apply sticky top-0 left-0 w-full pt-27 pb-23 xl:pb-0 2xl:pt-23;
+    background: #E5E5E5;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-height: 129px;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    overflow: visible;
     z-index: 100;
+    
+    // Force override at all breakpoints
+    @media (min-width: 1280px) {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    
+    @media (min-width: 1600px) {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
 
     .site-container {
-        @apply flex items-center justify-between xl:items-start xl:w-full max-w-[1240px] xl:max-w-[1640px] xl:pl-29 xl:pr-40 2xl:pr-61;
+        @apply flex items-center justify-between xl:w-full max-w-[1240px] xl:max-w-[1640px];
+        height: 100%;
+        align-items: center;
+        @media (min-width: 1280px) {
+            padding-left: 100px;
+            padding-right: 100px;
+        }
         @media screen and (min-width: 768px) and (max-width: 1025px) {
             width: calc(100% - 60px);
         }
     }
 
     .site-logo {
+        position: relative;
+        z-index: 101;
+        align-self: flex-start;
+        margin-bottom: -28px; // Logo is 157px, header is 129px, so 28px overhang
+        
         @media screen and (max-width: 768px) {
             @apply w-[210px];
-            
+            margin-bottom: -28px;
+        }
+        
+        img {
+            display: block;
+            width: 157px;
+            height: 157px;
+            object-fit: contain;
         }
     }
 
     &__navigation {
         @apply hidden xl:block;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        position: relative;
     }
 
     &__mobile-navigation {
@@ -26,20 +68,24 @@
     }
 
     &__menu {
-        @apply flex items-center relative gap-15 xl:gap-35;
+        @apply flex items-center relative gap-25 xl:gap-50;
 
         li {
             @apply xl:border-transparent hover:border-[#BFBFAFE5] transition duration-300;
+            display: flex;
+            align-items: center;
             &:not(.menu-item-has-children) {
                 // @apply 2xl:pl-30;
             }
             a {
-                @apply flex items-center gap-5 pt-18 xl:pt-29 xl:pb-50 leading-[1.35] 2xl:gap-10 font-gibson;
+                @apply flex items-center gap-5 2xl:gap-10 font-gibson;
                 color: #444;
                 font-size: 20px;
                 font-style: normal;
                 font-weight: 500;
                 line-height: 27px;
+                padding-top: 0;
+                padding-bottom: 0;
             }
             &:first-of-type {
                 @apply 2xl:pl-0;
@@ -51,7 +97,9 @@
                 @apply pl-18 xl:border-l xl:border-t ;
 
                > a {
-                    @apply relative text-[18px] xl:text-[20px] leading-[1.2] ;
+                    @apply relative text-[18px] xl:text-[20px] font-gibson;
+                    line-height: 27px;
+                    font-weight: 500;
                     &:after {
                         width: 13px;
                         height: 8px;
@@ -79,13 +127,53 @@
                 @apply relative;
 
                 .sub-menu {
-                    @apply absolute top-[100%] left-0 w-full h-fit bg-[#E6E6D7] pt-4 pb-14 min-w-[180px] 2xl:min-w-[230px] rounded-bl-[4px] rounded-br-[4px];
+                    @apply absolute left-0 w-full h-fit pb-14 min-w-[180px] 2xl:min-w-[230px];
+                    top: 100%; // Start directly below menu item to maintain hover connection
+                    padding-top: 78px; // Create invisible hover bridge (fills gap to bottom of header)
                     z-index: 10;
                     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
                     pointer-events: none;
                     transition: all 0.8s ease-in-out;
+                    
+                    // Background only on the content area (after padding), not the bridge
+                    background: transparent;
+                    
+                    // The padding-top area (78px) is the invisible hover bridge
+                    // It's part of the submenu element, so when pointer-events: all is set,
+                    // the padding area will also receive hover events
+                    
+                    // Create the background for the actual menu content
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        top: 78px; // Start after the padding bridge
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: #F6F6F6;
+                        z-index: -1;
+                    }
+                    
+                    // Multi-column layout for products menu with more than 7 items
+                    &:has(li:nth-child(8)) {
+                        display: grid;
+                        grid-template-columns: repeat(2, 1fr);
+                        column-gap: 20px;
+                        row-gap: 0;
+                        min-width: 400px;
+                        width: auto;
+                        
+                        li {
+                            width: auto;
+                        }
+                    }
+                    
                     li {
-                        @apply first:pt-0 w-full flex items-center relative justify-between transition duration-300;
+                        @apply w-full flex items-center relative justify-between transition duration-300;
+                        
+                        &:first-child {
+                            padding-top: 4px; // Add back the top padding for first item
+                        }
                         
                         a {
                             @apply py-8 px-17;
@@ -93,7 +181,6 @@
                             font-size: 16px;
                             font-style: normal;
                             font-weight: 400;
-                            // line-height: 39px !important;
                             line-height: 24px !important;
                         }
                         &:first-child {
@@ -127,7 +214,12 @@
                             background-image: url('../assets/border.svg');
                         }
                         &:hover {
-                            background: rgba(171, 167, 119, 0.17);
+                            background: #E5E5E5;
+                            border-radius: 4px;
+                            
+                            a {
+                                border-radius: 4px;
+                            }
                         }
                     }
                 }
@@ -139,8 +231,16 @@
                     .sub-menu {
                         clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
                         pointer-events: all;
+                        
                     }
-                    
+                }
+                
+                // Maintain hover when moving from menu item to submenu
+                // The padding-top area (78px) acts as the invisible bridge
+                &:hover .sub-menu,
+                .sub-menu:hover {
+                    clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+                    pointer-events: all;
                 }
             }
 
