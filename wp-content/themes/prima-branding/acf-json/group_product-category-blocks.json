@@ -1,0 +1,213 @@
+{
+    "key": "group_product-category-blocks",
+    "title": "Product Category Content Blocks",
+    "fields": [
+        {
+            "key": "field_category_content_blocks",
+            "label": "Content Blocks",
+            "name": "category_content_blocks",
+            "aria-label": "",
+            "type": "flexible_content",
+            "instructions": "Add content blocks to customize the product category page layout",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layouts": {
+                "layout_product_relationship": {
+                    "key": "layout_product_relationship",
+                    "name": "product_relationship",
+                    "label": "Product Relationship Grid",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_block_product_relationship",
+                            "label": "Product Relationship Block",
+                            "name": "product_relationship_block",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_product-relationship"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_wysiwyg": {
+                    "key": "layout_wysiwyg",
+                    "name": "wysiwyg",
+                    "label": "WYSIWYG Content",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_block_wysiwyg",
+                            "label": "WYSIWYG Block",
+                            "name": "wysiwyg_block",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_wysiwyg-content"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_product_categories": {
+                    "key": "layout_product_categories",
+                    "name": "product_categories",
+                    "label": "Product Categories Grid",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_block_product_categories",
+                            "label": "Product Categories Block",
+                            "name": "product_categories_block",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_product-categories"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_logo_carousel": {
+                    "key": "layout_logo_carousel",
+                    "name": "logo_carousel",
+                    "label": "Logo Carousel",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_block_logo_carousel",
+                            "label": "Logo Carousel Block",
+                            "name": "logo_carousel_block",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_logo-carousel"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_benefits": {
+                    "key": "layout_benefits",
+                    "name": "benefits",
+                    "label": "Benefits Block",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_block_benefits",
+                            "label": "Benefits Block",
+                            "name": "benefits_block",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_benefits-block"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                }
+            ],
+            "button_label": "Add Block",
+            "min": "",
+            "max": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "product_category"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Content blocks for product category pages",
+    "show_in_rest": 0,
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1736000000
+}
+

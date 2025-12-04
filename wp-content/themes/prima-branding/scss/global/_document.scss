@@ -41,21 +41,110 @@ p {
 }
 
 .products-hero {
-  h1 {
-    color: #444;
-    text-align: center;
-    font-style: normal;
-    font-weight: 300;
-    @apply text-[32px] leading-1 xl:text-[45px] 2xl:text-[55px] text-center my-30 lg:my-45 xl:mt-59 xl:mb-63;
-  }
-
-  img {
-    @apply w-full h-auto object-cover object-center;
-    &.image-mobile {
-      @apply block md:hidden min-h-[250px];
-    } 
-    &.image-desktop {
-      @apply hidden md:block xl:min-h-[560px];
+  background-color: transparent;
+  margin-top: 40px;
+  padding-top: 0;
+  position: relative;
+  
+  // Image wrapper - matching home-hero image-only variant
+  &--image-wrapper {
+    position: relative;
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    left: 0;
+    right: 0;
+    display: block;
+    overflow: hidden;
+    height: auto; // Auto height on mobile
+    max-height: none; // No max-height on mobile
+    
+    // Ensure wrapper maintains aspect ratio and allows zoom on mobile
+    @media (max-width: 767px) {
+      aspect-ratio: 16 / 9; // Maintain aspect ratio
+      min-height: 300px; // Minimum height
+    }
+    
+    @media (min-width: 768px) {
+      height: 557px;
+      max-height: 557px;
+    }
+    
+    img {
+      width: 100% !important;
+      max-width: 100% !important;
+      object-fit: cover !important;
+      object-position: center !important;
+      position: relative !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      left: auto !important;
+      bottom: auto !important;
+      top: auto !important;
+      right: auto !important;
+      z-index: 1;
+    }
+    
+    img.mobile-image {
+      display: block !important;
+      width: 100% !important;
+      height: auto !important;
+      max-height: none !important;
+      object-fit: cover !important;
+      object-position: center center !important;
+      
+      // Zoom into center focal point as viewport width decreases
+      @media (max-width: 767px) {
+        // Scale up the image to zoom into center as width decreases
+        min-width: 100%;
+        min-height: 100%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+        
+        // Progressive zoom on smaller screens - increased zoom values
+        @media (max-width: 480px) {
+          transform: scale(1.3);
+          transform-origin: center center;
+        }
+        
+        @media (max-width: 375px) {
+          transform: scale(1.5);
+          transform-origin: center center;
+        }
+        
+        @media (max-width: 320px) {
+          transform: scale(1.7);
+          transform-origin: center center;
+        }
+      }
+      
+      @media (min-width: 768px) {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        height: 0 !important;
+        width: 0 !important;
+        overflow: hidden !important;
+      }
+    }
+    
+    img.desktop-image {
+      display: none !important;
+      
+      @media (min-width: 768px) {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 557px !important;
+        max-height: 557px !important;
+        object-fit: cover !important;
+        object-position: center !important;
+      }
     }
   }
 
@@ -187,6 +276,48 @@ p {
 
 .site-page + .benefits-block {
   @apply xl:mt-84;
+}
+
+.products-page {
+  .section-header {
+    font-family: canada-type-gibson, sans-serif; // Gibson font
+    font-weight: 300;
+    font-style: normal; // Book style (normal weight)
+    font-size: 55px;
+    line-height: 70px;
+    letter-spacing: 0;
+    text-align: center;
+    padding-top: 84px;
+    padding-bottom: 75px; // Bottom padding under relationship header
+    
+    @media (max-width: 767px) {
+      font-size: 45px;
+      line-height: 60px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+  }
+}
+
+.site-page {
+  .section-header {
+    font-family: canada-type-gibson, sans-serif; // Gibson font
+    font-weight: 300;
+    font-style: normal; // Book style (normal weight)
+    font-size: 55px;
+    line-height: 70px;
+    letter-spacing: 0;
+    text-align: center;
+    padding-top: 84px;
+    padding-bottom: 75px; // Bottom padding under relationship header
+    
+    @media (max-width: 767px) {
+      font-size: 45px;
+      line-height: 60px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+  }
 }
 
 .products-page + .benefits-block {

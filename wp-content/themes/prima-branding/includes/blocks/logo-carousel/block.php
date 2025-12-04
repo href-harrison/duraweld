@@ -5,10 +5,30 @@
 
 /**
  * This is an argument that we provide to the render template
+ * Check if we should use site options or override with block-specific logos
  */
+$use_site_options = isset($block['data']['use_site_options']) ? $block['data']['use_site_options'] : (get_field('use_site_options', $post_id) ?? true);
+
+$header = false;
+$logo_repeater = false;
+
+if ($use_site_options) {
+	// Use logos from site options
+	$site_brand_logos = get_field('brand_logos', 'option');
+	if ($site_brand_logos) {
+		$header = $site_brand_logos['header'] ?? false;
+		$logo_repeater = $site_brand_logos['logo_repeater'] ?? false;
+	}
+} else {
+	// Use block-specific logos
+	$header = isset($block['data']['header']) ? $block['data']['header'] : (get_field('header', $post_id) ?? false);
+	$logo_repeater = isset($block['data']['logo_repeater']) ? $block['data']['logo_repeater'] : (get_field('logo_repeater', $post_id) ?? false);
+}
+
 $data = array(
-	'header' => get_field('header') ?? false,
-	'logo_repeater' => get_field('logo_repeater') ?? false,
+	'header' => $header,
+	'logo_repeater' => $logo_repeater,
+	'use_site_options' => $use_site_options,
 );
 
 

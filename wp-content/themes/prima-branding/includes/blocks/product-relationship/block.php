@@ -18,29 +18,73 @@ if (!isset($block)) {
  * This is an argument that we provide to the render template
  * ACF provides block data in $block['data'], use that to avoid duplicate rendering
  * For relationship fields, get_field() returns post objects, so use that as fallback
+ * 
+ * Auto-detect child products if this is a category page (parent page with children)
  */
 $product_relationship = false;
-if (isset($block['data']['product_relationship']) && !empty($block['data']['product_relationship'])) {
-	$product_relationship = $block['data']['product_relationship'];
-	// Ensure it's an array of post objects
-	if (!is_array($product_relationship)) {
-		$product_relationship = array($product_relationship);
-	}
-	// If items don't have ->ID property, they might be IDs - convert them
-	if (!empty($product_relationship) && (!is_object($product_relationship[0]) || !isset($product_relationship[0]->ID))) {
-		$product_relationship = array_map(function($item) {
-			$id = is_object($item) ? $item->ID : $item;
-			return get_post($id);
-		}, $product_relationship);
-		$product_relationship = array_filter($product_relationship);
-	}
-} else {
-	// Fallback to get_field which returns post objects for relationship fields
-	$product_relationship = get_field('product_relationship', $post_id) ?: false;
+$current_post_id = $post_id ?? get_the_ID();
+
+// Check if current page is a category page (has is_category_page field set OR has child products)
+$is_category_page = false;
+if ($current_post_id) {
+	$is_category_page_field = get_field('is_category_page', $current_post_id);
+	$has_children = get_children([
+		'post_parent' => $current_post_id,
+		'post_type' => 'product',
+		'numberposts' => 1, // Just check if any exist
+		'post_status' => 'publish'
+	]);
+	
+	// Page is a category if field is set OR if it has child products
+	$is_category_page = $is_category_page_field || !empty($has_children);
 }
+
+// If this is a category page, auto-load child products
+if ($is_category_page && $current_post_id) {
+	$child_products = get_children([
+		'post_parent' => $current_post_id,
+		'post_type' => 'product',
+		'posts_per_page' => -1,
+		'post_status' => 'publish',
+		'orderby' => 'menu_order',
+		'order' => 'ASC'
+	]);
+	
+	if (!empty($child_products)) {
+		$product_relationship = array_values($child_products); // Re-index array
+	}
+}
+
+// If not a category page or no children found, use manual relationship field
+if (!$product_relationship) {
+	if (isset($block['data']['product_relationship']) && !empty($block['data']['product_relationship'])) {
+		$product_relationship = $block['data']['product_relationship'];
+		// Ensure it's an array of post objects
+		if (!is_array($product_relationship)) {
+			$product_relationship = array($product_relationship);
+		}
+		// If items don't have ->ID property, they might be IDs - convert them
+		if (!empty($product_relationship) && (!is_object($product_relationship[0]) || !isset($product_relationship[0]->ID))) {
+			$product_relationship = array_map(function($item) {
+				$id = is_object($item) ? $item->ID : $item;
+				return get_post($id);
+			}, $product_relationship);
+			$product_relationship = array_filter($product_relationship);
+		}
+	} else {
+		// Fallback to get_field which returns post objects for relationship fields
+		$product_relationship = get_field('product_relationship', $post_id) ?: false;
+	}
+}
+
+// Get header and toggle_overlay from block data
+$header = $block['data']['header'] ?? get_field('header', $post_id) ?? false;
+$toggle_overlay = isset($block['data']['toggle_overlay']) ? $block['data']['toggle_overlay'] : (get_field('toggle_overlay', $post_id) !== false ? get_field('toggle_overlay', $post_id) : true);
 
 $data = array(
 	'product_relationship' => $product_relationship,
+	'header' => $header,
+	'toggle_overlay' => $toggle_overlay,
 );
 
 

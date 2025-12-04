@@ -1,0 +1,30 @@
+{
+    "name": "acf/product-category-template",
+    "title": "Product Category Template",
+    "description": "Complete product category page template with all blocks",
+    "category": "theme",
+    "apiVersion": 2,
+    "example": {
+        "attributes": {
+            "data": {
+                "preview-screenshot": "block-preview.png"
+            },
+            "mode": "preview"
+        }
+    },
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "includes/blocks/product-category-template/block.php"
+    },
+    "style": "file:./dist/block.min.css",
+    "supports": {
+        "anchor": true,
+        "mode": true,
+        "align": false,
+        "color": {
+            "background": true,
+            "text": false
+        }
+    }
+}
+

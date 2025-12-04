@@ -1,14 +1,68 @@
 .product-relationship {
-    @apply my-8 md:my-18;
+    margin-top: 0; // Remove top margin
+    margin-bottom: 0; // Remove bottom margin
+    
+    .section-header {
+        font-family: canada-type-gibson, sans-serif; // Gibson font
+        font-weight: 300;
+        font-style: normal; // Book style (normal weight)
+        font-size: 55px;
+        line-height: 70px;
+        letter-spacing: 0;
+        text-align: center;
+        padding-top: 84px;
+        padding-bottom: 75px; // Bottom padding under relationship header
+        
+        @media (max-width: 767px) {
+            font-size: 45px;
+            line-height: 60px;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+    }
+    
     .products-grid {
         @apply relative grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-y-24 xl:gap-x-20;
+        
+        // Make grid extend to full page width - break out of container
+        position: relative;
+        width: 100vw;
+        max-width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+        left: 0;
+        right: 0;
+        padding-left: 0; // Edge-to-edge on desktop
+        padding-right: 0; // Edge-to-edge on desktop
+        
+        // Tablet: also edge-to-edge (no padding)
+        @media (max-width: 1279px) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        
+        // Mobile: keep padding
+        @media (max-width: 767px) {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
     }
 
     .site-container {
-        // @media screen and (max-width: 450px) {
             width: 100%;
             max-width: 1640px;
-        // }
+        padding-left: 100px;
+        padding-right: 100px;
+        
+        @media (max-width: 1279px) {
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+        
+        @media (max-width: 767px) {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
     }
 }
 
@@ -32,14 +86,14 @@
             svg {
                 transform: rotate(45deg);
                 path {
-                    fill: #fff;
+                    fill: #414042; // Black instead of white
                 }
                 circle {
-                    stroke: #fff;
+                    stroke: #414042; // Black instead of white
                 }
             }
             h5 {
-                color: #fff;
+                color: #414042; // Keep black text, don't change to white
             }
         }
     }
@@ -94,7 +148,7 @@
                 left: 50%;
                 transform: translateX(-50%);
                 content: '';
-                background-color: #FBB034;
+                background-color: #C2D831;
             }
             @media screen and (max-width: 1200px) {
                 font-size: 24px;
@@ -154,20 +208,39 @@
     }
 
     .toggle-overlay {
+        z-index: 20;
+        transition: all 0.3s ease-in-out;
+        position: absolute;
+        padding: 12px 20px;
+        
         @media screen and (max-width: 1050px) {
             pointer-events: none;
         }
-        @apply flex items-center gap-12 absolute bottom-12 left-23 2xl:bottom-27;
-        z-index: 20;
-        transition: all 0.3s ease-in-out;
+        
+        @apply flex items-center gap-12;
+        bottom: 0;
+        
+        @media screen and (max-width: 768px) {
+            padding: 10px 16px;
+        }
+        
+        .toggle-overlay-background {
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.7);
+            border-top-right-radius: 15px;
+            z-index: -1;
+        }
+        
         h5 {
             color: #414042;
-            font-size: 16px;
-            font-style: normal;
+            font-family: canada-type-gibson, sans-serif;
             font-weight: 500;
-            line-height: 20px;
+            font-style: normal;
+            font-size: 27px;
+            line-height: 42px;
+            letter-spacing: 0;
             transition: all 0.3s ease-in-out;
-            @apply xl:text-[18px];
             @media screen and (max-width: 768px) {
                 // text-shadow: 1px 1px 2px #b6b6b6;
                 text-shadow: 1px 1px 3px #e4e4e4;
@@ -218,27 +291,29 @@
             }
         }
     }
-    @media screen and (min-width: 1024px) {
+    // Border radius: only inner corners rounded on desktop/tablet, square on mobile
+    // Column 1 (odd items): top-right and bottom-right rounded (inner corners)
+    // Column 2 (even items): top-left and bottom-left rounded (inner corners)
+    @media screen and (min-width: 768px) {
+        overflow: hidden;
+        border-radius: 0; // Default: no border-radius
+        
+        // First column (odd items) - border-radius on right side (inner edge)
         &:nth-child(odd) {
-            clip-path: polygon(
-                0% 0%,    /* Top-left corner */
-                calc(100% - 8px) 0%, /* Top-right corner, shaved by 8px */
-                100% 8px, /* Top-right inner corner */
-                100% calc(100% - 8px), /* Bottom-right inner corner */
-                calc(100% - 8px) 100%, /* Bottom-right corner, shaved by 8px */
-                0% 100%   /* Bottom-left corner */
-            );
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
         }
+        
+        // Second column (even items) - border-radius on left side (inner edge)
         &:nth-child(even) {
-            clip-path: polygon(
-                8px 0%,   /* Top-left corner, shaved by 8px */
-                100% 0%,  /* Top-right corner */
-                100% 100%, /* Bottom-right corner */
-                8px 100%, /* Bottom-left corner, shaved by 8px */
-                0% calc(100% - 8px), /* Bottom-left inner corner */
-                0% 8px    /* Top-left inner corner */
-            );
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
         }
+    }
+    
+    // Mobile: all corners square (no border-radius)
+    @media screen and (max-width: 767px) {
+        border-radius: 0 !important;
     }
 
     .mobile-tile {

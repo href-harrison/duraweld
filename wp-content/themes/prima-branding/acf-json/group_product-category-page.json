@@ -1,0 +1,54 @@
+{
+    "key": "group_product-category-page",
+    "title": "Product Category Page Settings",
+    "fields": [
+        {
+            "key": "field_is_category_page",
+            "label": "Is Category Page",
+            "name": "is_category_page",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Enable this to make this product page automatically display its child products. When enabled, any child products assigned to this page will automatically appear when you add a \"Product Relationship\" block.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Enable Category Page Mode",
+            "default_value": 0,
+            "ui_on_text": "Yes",
+            "ui_off_text": "No",
+            "ui": 1,
+            "allow_in_bindings": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "product"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Settings for product category pages that display child products",
+    "show_in_rest": 0,
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1735816000
+}
+

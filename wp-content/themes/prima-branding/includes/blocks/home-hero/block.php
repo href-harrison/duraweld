@@ -12,6 +12,7 @@
 $data = array(
 	'variant' => $block['data']['variant'] ?? 'default',
 	'header' => $block['data']['header'] ?? false,
+	'body_text' => $block['data']['body_text'] ?? false,
 	'link' => $block['data']['link'] ?? false,
 	'image' => $block['data']['image'] ?? false,
 	'mobile_image' => $block['data']['mobile_image'] ?? false,

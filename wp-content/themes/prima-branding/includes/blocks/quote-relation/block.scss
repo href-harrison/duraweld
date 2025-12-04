@@ -35,7 +35,7 @@
         &:after {
             @apply absolute bottom-0 right-0 w-[calc(100%+23px)] h-1;
             content: '';
-            background-color: #FBB034;
+            background-color: #C2D831;
             @media screen and (min-width: 1440px) {
                 width: calc(100% + 111px);
             }

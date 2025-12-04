@@ -5,9 +5,26 @@
 
 /**
  * This is an argument that we provide to the render template
+ * Check if we should use site options or override with block-specific benefits
  */
+$use_site_options = isset($block['data']['use_site_options']) ? $block['data']['use_site_options'] : (get_field('use_site_options', $post_id) ?? true);
+
+$benefits_repeater = false;
+
+if ($use_site_options) {
+	// Use benefits from unified product benefits in site options
+	$unified_benefits = get_field('product_benefits', 'option');
+	if ($unified_benefits) {
+		$benefits_repeater = $unified_benefits['benefits_repeater'] ?? false;
+	}
+} else {
+	// Use block-specific benefits
+	$benefits_repeater = isset($block['data']['benefits_repeater']) ? $block['data']['benefits_repeater'] : (get_field('benefits_repeater', $post_id) ?? false);
+}
+
 $data = array(
-	'benefits_repeater' => get_field('benefits_repeater') ?? false,
+	'benefits_repeater' => $benefits_repeater,
+	'use_site_options' => $use_site_options,
 );
 
 

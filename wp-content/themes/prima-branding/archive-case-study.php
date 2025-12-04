@@ -3,8 +3,9 @@
   $case_hero_image_mobile = get_field('case_background_image_mobile', 'option');
   $case_hero_video = get_field('case_background_video', 'option');
   $case_hero_header = get_field('case_listing_header', 'option');
-  $case_listing_benefits = get_field('case_benefits', 'option');
-  $benefits_repeater = $case_listing_benefits['benefits_repeater'];
+  // Always use unified product benefits for case study archive
+  $unified_benefits = get_field('product_benefits', 'option');
+  $benefits_repeater = $unified_benefits['benefits_repeater'] ?? [];
 ?>
 <section class="news-hero">
     <?php if($case_hero_video) : ?>

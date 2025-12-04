@@ -92,3 +92,60 @@ add_filter('acf/settings/load_json', function($paths) {
   $paths[] = get_stylesheet_directory() . '/acf-json';
   return $paths;
 });
+
+/**
+ * Optimize ACF taxonomy field queries for performance
+ */
+
+// Optimize parent_filter field (only show top-level terms)
+add_filter('acf/fields/taxonomy/query/name=parent_filter', function($args, $field, $post_id) {
+	$args['parent'] = 0; // Only show top-level terms
+	$args['number'] = 50; // Limit results for performance
+	$args['orderby'] = 'name';
+	$args['order'] = 'ASC';
+	$args['hide_empty'] = false; // Show all terms even if empty
+	return $args;
+}, 10, 3);
+
+// Filter results for parent_filter to ensure only top-level terms appear
+add_filter('acf/fields/taxonomy/result/name=parent_filter', function($text, $term, $field) {
+	// Prevent child terms from appearing in the parent filter dropdown
+	if ($term->parent !== 0) {
+		return false;
+	}
+	return $text;
+}, 10, 3);
+
+// Optimize filter_term field - consolidated and aggressive optimization
+add_filter('acf/fields/taxonomy/query', function($args, $field, $post_id) {
+	// Only optimize filter_term fields in the product-filtered-grid block
+	if (isset($field['name']) && $field['name'] === 'filter_term') {
+		// Very aggressive limiting for initial load
+		if (empty($args['search'])) {
+			$args['number'] = 25; // Only 25 terms on initial load for fast performance
+		} else {
+			$args['number'] = 100; // More when searching
+		}
+		
+		$args['orderby'] = 'name';
+		$args['order'] = 'ASC';
+		$args['hide_empty'] = false;
+		
+		// Exclude top-level parent terms (Size, Style) - only show child terms
+		// This significantly reduces the number of terms to load
+		$parent_terms = get_terms([
+			'taxonomy' => 'product_filters',
+			'parent' => 0,
+			'fields' => 'ids',
+			'hide_empty' => false,
+		]);
+		
+		if (!empty($parent_terms) && !is_wp_error($parent_terms)) {
+			// Exclude parent term IDs from results (only show child terms like A4, A5, etc.)
+			$existing_exclude = isset($args['exclude']) && is_array($args['exclude']) ? $args['exclude'] : [];
+			$args['exclude'] = array_unique(array_merge($existing_exclude, $parent_terms));
+		}
+	}
+	
+	return $args;
+}, 5, 3); // Priority 5 to run early, before other filters

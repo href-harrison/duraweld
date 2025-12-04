@@ -1,0 +1,90 @@
+.contact-bar {
+    background: #F5F5F5;
+    @apply py-5;
+    border-top: none !important;
+    border-bottom: none !important;
+    
+    @media (min-width: 1280px) {
+        height: 82px;
+        padding-top: 0;
+        padding-bottom: 0;
+        display: flex;
+        align-items: center;
+    }
+    
+    .site-container {
+        @apply w-full max-w-[1640px];
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+    
+    .contact-bar-items {
+        @apply flex items-center justify-center flex-wrap;
+        gap: 48px; // gap-12 equivalent (3rem)
+        
+        @media (max-width: 767px) {
+            @apply flex-col gap-5;
+        }
+    }
+    
+    .contact-item {
+        @apply flex items-center;
+        gap: 15px; // 15px gap between icon and copy
+        
+        .contact-link {
+            @apply flex items-center no-underline text-[#444] transition-colors duration-300;
+            gap: 15px; // 15px gap between icon and copy
+            
+            &:hover {
+                @apply text-[#0066CC];
+            }
+        }
+        
+        .contact-icon {
+            @apply flex items-center justify-center max-w-[29px] h-auto flex-shrink-0 text-[#444];
+            
+            svg {
+                @apply w-full h-full;
+                stroke: currentColor;
+            }
+            
+            img {
+                @apply max-w-[29px] h-auto;
+                object-fit: contain;
+            }
+        }
+        
+        .contact-content {
+            @apply flex items-center gap-2 flex-wrap;
+        }
+        
+        .contact-heading {
+            @apply text-[#444] font-gibson text-[20px] font-normal leading-[35px] uppercase tracking-[2px];
+            
+            @media screen and (max-width: 400px) {
+                @apply text-[16px];
+            }
+            
+            @media screen and (min-width: 1280px) and (max-width: 1450px) {
+                @apply text-[18px];
+            }
+        }
+        
+        .contact-value {
+            @apply text-[#444] font-gibson text-[20px] font-normal leading-[35px];
+            
+            @media screen and (max-width: 400px) {
+                @apply text-[16px];
+            }
+            
+            @media screen and (min-width: 1280px) and (max-width: 1450px) {
+                @apply text-[18px];
+            }
+        }
+    }
+    
+    .contact-bar-empty {
+        @apply p-5 bg-[#f0f0f0] border border-dashed border-[#ccc] text-center;
+    }
+}
+

@@ -6,8 +6,9 @@ $error_404_copy = get_field('error_404_copy', 'option');
 $error_404_main_link = get_field('error_404_main_link', 'option');
 $error_404_products_link = get_field('error_404_products_link', 'option');
 $error_404_shop_link = get_field('error_404_shop_link', 'option');
-$news_listing_benefits = get_field('news_benefits', 'option');
-$benefits_repeater = $news_listing_benefits['benefits_repeater'];
+// Always use unified product benefits for 404 page
+$unified_benefits = get_field('product_benefits', 'option');
+$benefits_repeater = $unified_benefits['benefits_repeater'] ?? [];
 ?>
 <section
     id="error-404-page" 

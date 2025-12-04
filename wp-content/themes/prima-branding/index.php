@@ -3,8 +3,9 @@
   $news_hero_image_mobile = get_field('news_background_image_mobile', 'option');
   $news_hero_video = get_field('news_background_video', 'option');
   $news_hero_header = get_field('news_listing_header', 'option');
-  $news_listing_benefits = get_field('news_benefits', 'option');
-  $benefits_repeater = $news_listing_benefits['benefits_repeater'];
+  // Always use unified product benefits for news archive
+  $unified_benefits = get_field('product_benefits', 'option');
+  $benefits_repeater = $unified_benefits['benefits_repeater'] ?? [];
 ?>
 <section class="news-hero">
     <?php if($news_hero_video) : ?>

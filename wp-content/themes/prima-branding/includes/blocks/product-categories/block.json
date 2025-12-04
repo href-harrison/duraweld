@@ -1,0 +1,84 @@
+{
+    "name": "acf/product-categories",
+    "title": "Product Categories",
+    "description": "Display a 4-column grid of product categories with images, headings, and links",
+    "category": "theme",
+    "icon": "grid-view",
+    "keywords": [
+        "product",
+        "categories",
+        "grid",
+        "repeater",
+        "items"
+    ],
+    "apiVersion": 2,
+    "example": {
+        "attributes": {
+            "data": {
+                "preview-screenshot": "block-preview.png",
+                "category_items": [
+                    {
+                        "image": {
+                            "url": "",
+                            "alt": "Category 1"
+                        },
+                        "heading": "Promo Goods",
+                        "link": {
+                            "url": "#",
+                            "title": "View Promo Goods"
+                        }
+                    },
+                    {
+                        "image": {
+                            "url": "",
+                            "alt": "Category 2"
+                        },
+                        "heading": "Paper Over Board",
+                        "link": {
+                            "url": "#",
+                            "title": "View Paper Over Board"
+                        }
+                    },
+                    {
+                        "image": {
+                            "url": "",
+                            "alt": "Category 3"
+                        },
+                        "heading": "Clipboards",
+                        "link": {
+                            "url": "#",
+                            "title": "View Clipboards"
+                        }
+                    },
+                    {
+                        "image": {
+                            "url": "",
+                            "alt": "Category 4"
+                        },
+                        "heading": "Slip Cases",
+                        "link": {
+                            "url": "#",
+                            "title": "View Slip Cases"
+                        }
+                    }
+                ]
+            },
+            "mode": "preview"
+        }
+    },
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "includes/blocks/product-categories/block.php"
+    },
+    "style": "file:./dist/block.min.css",
+    "supports": {
+        "anchor": true,
+        "mode": true,
+        "align": false,
+        "color": {
+            "background": true,
+            "text": false
+        }
+    }
+}
+

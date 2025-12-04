@@ -44,7 +44,7 @@
     },
     "description": "",
     "public": true,
-    "hierarchical": false,
+    "hierarchical": true,
     "exclude_from_search": false,
     "publicly_queryable": true,
     "show_ui": true,
@@ -69,16 +69,23 @@
         "editor",
         "excerpt",
         "thumbnail",
-        "custom-fields"
+        "custom-fields",
+        "page-attributes"
     ],
-    "taxonomies": "",
+    "taxonomies": [
+        "product_type",
+        "product_category",
+        "product_tag"
+    ],
     "has_archive": true,
     "has_archive_slug": "",
     "rewrite": {
-        "permalink_rewrite": "post_type_key",
+        "permalink_rewrite": "custom_permalink",
+        "slug": "products",
         "with_front": "1",
         "feeds": "0",
-        "pages": "1"
+        "pages": "1",
+        "hierarchical": "1"
     },
     "query_var": "post_type_key",
     "query_var_name": "",

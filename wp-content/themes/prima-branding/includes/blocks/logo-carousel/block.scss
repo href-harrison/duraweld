@@ -1,5 +1,6 @@
 .logo-carousel {
-    @apply mb-66 xl:mb-87;
+    margin-top: 75px;
+    margin-bottom: 75px;
     .site-container {
         @apply overflow-hidden;
     }
@@ -29,7 +30,7 @@
             background-color: #ECECEC;
             opacity: 1;
             &-active {
-                background-color: #FBB034;
+                background-color: #C2D831;
             }
         }
     }

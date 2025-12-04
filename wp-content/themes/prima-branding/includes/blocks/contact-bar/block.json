@@ -1,0 +1,30 @@
+{
+    "name": "acf/contact-bar",
+    "title": "Contact Bar",
+    "description": "Display a contact bar with phone and email information",
+    "category": "theme",
+    "icon": "email-alt",
+    "keywords": [
+        "contact",
+        "phone",
+        "email",
+        "bar",
+        "repeater"
+    ],
+    "apiVersion": 2,
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "includes/blocks/contact-bar/block.php"
+    },
+    "style": "file:./dist/block.min.css",
+    "supports": {
+        "anchor": true,
+        "mode": true,
+        "align": false,
+        "color": {
+            "background": true,
+            "text": false
+        }
+    }
+}
+

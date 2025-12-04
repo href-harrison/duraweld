@@ -56,6 +56,11 @@
             ?>
               </nav>
             </div>
+            <div class="mobile-nav__logo">
+              <?php if($header_logo) : ?>
+                <img src="<?php echo $header_logo['url']; ?>" alt="<?php bloginfo('name'); ?>">
+              <?php endif; ?>
+            </div>
       </div>
       </header>
 

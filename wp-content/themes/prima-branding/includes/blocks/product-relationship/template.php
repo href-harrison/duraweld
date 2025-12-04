@@ -17,6 +17,8 @@ $block = $args['block'] ?? false;
 $data = $args['data'];
 
 $product_relationship = $data['product_relationship'];
+$header = $data['header'] ?? false;
+$toggle_overlay = $data['toggle_overlay'] ?? true;
 
 /**
  * Unique block identifier added to the block
@@ -43,13 +45,17 @@ if ($block && $block_id && isset($block['ghostkit']['styles']) && $spacings = $b
     class="<?php echo $class_name; ?>"
 >
     <div class="site-container">
+        <?php if($header) : ?>
+            <h2 class="section-header" data-aos="fade-in"><?php echo esc_html($header); ?></h2>
+        <?php endif; ?>
         <?php if($product_relationship) : ?>
-            <div class="products-grid">
+            <div class="products-grid <?php echo $toggle_overlay ? 'has-toggle-overlay' : 'no-toggle-overlay'; ?>">
                 <?php foreach($product_relationship as $index=>$product) : 
 
                         get_template_part('template-parts/cards/product', 'card', [
                             'post_id' => $product->ID,
                             'index' => $index,
+                            'toggle_overlay' => $toggle_overlay,
                         ]); ?>
 
                         

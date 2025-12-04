@@ -5,32 +5,20 @@
     left: 0;
     width: 100%;
     max-height: 129px;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
     overflow: visible;
     z-index: 100;
-    
-    // Force override at all breakpoints
-    @media (min-width: 1280px) {
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
-    }
-    
-    @media (min-width: 1600px) {
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
-    }
 
     .site-container {
         @apply flex items-center justify-between xl:w-full max-w-[1240px] xl:max-w-[1640px];
         height: 100%;
         align-items: center;
-        @media (min-width: 1280px) {
-            padding-left: 100px;
-            padding-right: 100px;
-        }
+        
+        @apply xl:px-[100px];
+        
         @media screen and (min-width: 768px) and (max-width: 1025px) {
             width: calc(100% - 60px);
         }
@@ -40,13 +28,26 @@
         position: relative;
         z-index: 101;
         align-self: flex-start;
-        margin-bottom: -28px; // Logo is 157px, header is 129px, so 28px overhang
+        margin-bottom: -28px;
+        width: 157px;
+        height: auto;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out, transform 0.4s ease-in-out;
         
-        @media screen and (max-width: 768px) {
-            @apply w-[210px];
-            margin-bottom: -28px;
+        &.logo-hidden {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out;
         }
         
+        @media screen and (max-width: 1279px) {
+            width: 157px;
+            margin-bottom: -28px;
+        }
+            
         img {
             display: block;
             width: 157px;
@@ -56,8 +57,7 @@
     }
 
     &__navigation {
-        @apply hidden xl:block;
-        display: flex;
+        @apply hidden xl:flex;
         align-items: center;
         height: 100%;
         position: relative;
@@ -68,15 +68,20 @@
     }
 
     &__menu {
-        @apply flex items-center relative gap-25 xl:gap-50;
+        @apply hidden xl:flex;
+        align-items: center;
+        position: relative;
+        gap: 75px;
 
         li {
-            @apply xl:border-transparent hover:border-[#BFBFAFE5] transition duration-300;
+            @apply xl:border-transparent transition duration-300;
             display: flex;
             align-items: center;
-            &:not(.menu-item-has-children) {
-                // @apply 2xl:pl-30;
+            
+            &:hover {
+                border-color: transparent;
             }
+            
             a {
                 @apply flex items-center gap-5 2xl:gap-10 font-gibson;
                 color: #444;
@@ -87,19 +92,27 @@
                 padding-top: 0;
                 padding-bottom: 0;
             }
+            
             &:first-of-type {
                 @apply 2xl:pl-0;
                 a {
                     @apply 2xl:pl-0;
                 }
             }
+            
             &.menu-item-has-children {
-                @apply pl-18 xl:border-l xl:border-t ;
+                @apply pl-18;
+                
+                &:hover {
+                    border-left: none;
+                    border-top: none;
+                }
 
-               > a {
+                > a {
                     @apply relative text-[18px] xl:text-[20px] font-gibson;
                     line-height: 27px;
                     font-weight: 500;
+                    
                     &:after {
                         width: 13px;
                         height: 8px;
@@ -111,6 +124,7 @@
                         transition: all 0.3s ease-in-out;
                     }
                 }
+                
                 &:hover {
                     a {
                         &:after {
@@ -123,146 +137,234 @@
                     @apply px-0;
                 }
             }
-            &.menu-item-has-children:not(.mega-menu) {
-                @apply relative;
+            
+            // Mega Menu Styling for Products Dropdown
+            // Add class "mega-menu" to the Products menu item in WordPress Menu Editor
+            &.menu-item-has-children.mega-menu {
+                position: relative;
 
+                // Hide sub-menu by default
                 .sub-menu {
-                    @apply absolute left-0 w-full h-fit pb-14 min-w-[180px] 2xl:min-w-[230px];
-                    top: 100%; // Start directly below menu item to maintain hover connection
-                    padding-top: 50px; // Create invisible hover bridge (fills gap to bottom of header)
-                    z-index: 10;
-                    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                    position: absolute;
+                    left: 0;
+                    top: 100%;
+                    width: 500px;
+                    min-width: 500px;
+                    padding: 0;
+                    margin: 0;
+                    z-index: 100;
+                    opacity: 0;
+                    visibility: hidden;
                     pointer-events: none;
-                    transition: all 0.8s ease-in-out;
+                    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+                    background: #f8f8f8;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                    list-style: none;
                     
-                    // Background only on the content area (after padding), not the bridge
-                    background: transparent;
+                    // Two-column CSS Grid layout
+                    display: grid;
+                    grid-template-columns: 250px 250px;
+                    grid-auto-flow: row;
+                    grid-auto-rows: auto;
+                    gap: 0;
+                    align-content: start;
                     
-                    // The padding-top area (50px) is the invisible hover bridge
-                    // It's part of the submenu element, so when pointer-events: all is set,
-                    // the padding area will also receive hover events
+                    // Column 1: Parent Product Categories (left side)
+                    // Column 2: Child Products (right side)
                     
-                    // Create the background for the actual menu content
-                    &::after {
-                        content: '';
-                        position: absolute;
-                        top: 50px; // Start after the padding bridge
-                        left: 0;
+                    // Style all direct child list items
+                    > li {
+                        margin: 0;
+                        padding: 0;
                         width: 100%;
-                        height: 100%;
-                        background: #F6F6F6;
-                        z-index: -1;
-                    }
-                    
-                    // Multi-column layout for products menu with more than 7 items
-                    &:has(li:nth-child(8)) {
-                        display: grid;
-                        grid-template-columns: repeat(2, 1fr);
-                        column-gap: 20px;
-                        row-gap: 0;
-                        min-width: 400px;
-                        width: auto;
+                        position: relative;
+                        list-style: none;
+                        display: block;
                         
-                        li {
-                            width: auto;
-                        }
-                    }
-                    
-                    li {
-                        @apply w-full flex items-center relative justify-between transition duration-300;
-                        
-                        &:first-child {
-                            padding-top: 4px; // Add back the top padding for first item
+                        // Parent categories (Column 1) - items without child-sub-menu-item class
+                        &:not(.child-sub-menu-item) {
+                            grid-column: 1 / 2;
+                            // grid-row is set via JavaScript to account for children
+                            border-right: 1px dotted #ccc;
                         }
                         
-                        a {
-                            @apply py-8 px-17;
+                        // Child products (Column 2) - items with child-sub-menu-item class
+                        &.child-sub-menu-item {
+                            grid-column: 2 / 3 !important; // Force column 2
+                            // grid-row will be auto or set via JavaScript
+                            // Ensure it stays in grid flow
+                            display: block !important;
+                        }
+                        
+                        // Link styling
+                        > a {
+                            display: block;
+                            padding: 12px 20px;
                             color: #444;
                             font-size: 16px;
-                            font-style: normal;
                             font-weight: 400;
-                            line-height: 24px !important;
+                            line-height: 24px;
+                            text-decoration: none;
+                            border-bottom: 1px dotted #ccc;
+                            transition: background-color 0.2s ease-in-out;
+                            cursor: pointer;
+                            
+                            &:hover {
+                                background-color: #e5e5e5;
+                            }
                         }
-                        &:first-child {
-                            @apply items-start;
-                            a {
-                                // @apply pt-0;
-                            }
-                            &:after {
-                                @apply mt-8;
+                        
+                        // Remove bottom border from last item in each column
+                        &:last-child > a,
+                        &.child-sub-menu-item:last-child > a {
+                            border-bottom: none;
+                        }
+                        
+                        // Highlighted item (e.g., "Swatch Books")
+                        // Add class "highlighted-item" in WordPress Menu Editor
+                        &.highlighted-item {
+                            > a {
+                                background-color: #e5e5e5;
                             }
                         }
-                        &:last-child {
-                            a {
-                                @apply pb-0;
+                        
+                        // Hover state for all items
+                        &:hover {
+                            > a {
+                                background-color: #e5e5e5;
                             }
-                            &:after {
-                                @apply mt-8;
-                            }
-                            &:before {
+                        }
+                        
+                        // Parent categories with nested children
+                        &.menu-item-has-children {
+                            // Hide the nested sub-menu container (children are extracted to column 2)
+                            > .sub-menu {
                                 display: none;
                             }
-                        }
-
-                        &:before {
-                            position: absolute;
-                            top: 100%;
-                            left: 0;
-                            width: 100%;
-                            height: 1px;
-                            content: '';
-                            background-image: url('../assets/border.svg');
-                        }
-                        &:hover {
-                            background: #E5E5E5;
-                            border-radius: 4px;
                             
-                            a {
-                                border-radius: 4px;
+                            // Remove chevron indicators
+                            > a::after {
+                                display: none;
+                            }
+                            
+                            // On hover, highlight the parent and show its children are in column 2
+                            &:hover {
+                                > a {
+                                    background-color: #e5e5e5;
+                                }
+                            }
+                        }
+                        
+                        // Child products in column 2 - shown/hidden based on parent hover
+                        &.child-sub-menu-item {
+                            // Force into column 2 - always in grid
+                            grid-column: 2 / 3;
+                            grid-row: auto;
+                            
+                            // Use visibility instead of display so items stay in grid layout
+                            // Initially hidden, shown via JavaScript when parent is hovered
+                            visibility: hidden;
+                            opacity: 0;
+                            pointer-events: none;
+                            transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+                            
+                            // When visible class is added by JavaScript
+                            &.visible {
+                                visibility: visible;
+                                opacity: 1;
+                                pointer-events: all;
+                            }
+                            
+                            // Style child product links
+                            > a {
+                                display: block;
+                            }
+                            
+                            // Keep visible when hovering over child product itself
+                            &:hover {
+                                visibility: visible;
+                                opacity: 1;
+                                pointer-events: all;
                             }
                         }
                     }
                 }
 
+                // Show mega menu on hover
                 &:hover {
-                    &:after {
-                        transform: rotate(180deg);
-                    }
                     .sub-menu {
-                        clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+                        opacity: 1;
+                        visibility: visible;
                         pointer-events: all;
-                        
+                    }
+                }
+            }
+            
+            // Regular dropdown menus (non-mega-menu) - keep existing behavior
+            &.menu-item-has-children:not(.mega-menu) {
+                @apply relative;
+                
+                .sub-menu {
+                    @apply absolute left-0;
+                    top: 100%;
+                    min-width: 200px;
+                    padding: 10px 0;
+                    z-index: 10;
+                    opacity: 0;
+                    visibility: hidden;
+                    pointer-events: none;
+                    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+                    background: #fff;
+                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                    
+                    li {
+                        a {
+                            display: block;
+                            padding: 10px 20px;
+                            color: #444;
+                            text-decoration: none;
+                            
+                            &:hover {
+                                background-color: #f5f5f5;
+                            }
+                        }
                     }
                 }
                 
-                // Maintain hover when moving from menu item to submenu
-                // The padding-top area (50px) acts as the invisible bridge
-                &:hover .sub-menu,
-                .sub-menu:hover {
-                    clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
-                    pointer-events: all;
+                &:hover {
+                    .sub-menu {
+                        opacity: 1;
+                        visibility: visible;
+                        pointer-events: all;
+                    }
                 }
             }
-
         }
     }
 
     .hamburger {
-        @apply flex items-center w-51 h-33 relative xl:hidden;
+        @apply flex items-center justify-center xl:hidden;
+        width: 51px;
+        height: 33px;
+        position: relative;
         z-index: 51;
+        
         span {
             @apply block w-full h-5 bg-[#414042];
             transition: all 0.3s ease-in-out;
         }
+        
         &:after,
         &:before {
             @apply block w-full h-5 bg-[#414042] absolute left-0;
             content: '';
             transition: all 0.3s ease-in-out;
         }
+        
         &:after {
             @apply bottom-0;
         }
+        
         &:before {
             @apply top-0;
         }
@@ -282,7 +384,8 @@
 }
 
 .mobile-nav {
-    @apply absolute top-0 left-0 w-full bg-[#E6E6D7] text-[#fff] pt-139 px-0  pb-[230px];
+    @apply absolute top-0 left-0 w-full text-[#fff] pt-139 px-0 pb-[230px];
+    background: #E5E5E5;
     min-height: 100dvh;
     overflow-y: auto;
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
@@ -290,18 +393,23 @@
     pointer-events: none;
     z-index: 50;
     box-sizing: border-box;
+    
     &.open {
         clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
         pointer-events: all;
     }
+    
     .site-container {
         @apply w-full;
     }
+    
     ul {
         z-index: 10;
         @apply px-0 w-full;
+        
         li {
-            @apply relative w-full ;
+            @apply relative w-full;
+            
             &:before {
                 position: absolute;
                 top: 100%;
@@ -311,24 +419,25 @@
                 content: '';
                 background-image: url('../assets/border.svg');
             }
+            
             &:last-child {
                 &:before {
                     display: none;
                 }
             }
+            
             a {
-                @apply py-17 px-30 block w-fit;
-
+                @apply py-17 px-30 block w-fit font-gibson;
                 color: #444;
                 font-size: 30px;
                 font-style: normal;
                 font-weight: 600;
                 line-height: 39px;
-                @apply font-gibson;
             }
+            
             &.menu-item-has-children {
-                // @apply flex items-center justify-between;
                 transition: all 0.3s ease-in-out;
+                
                 &:after {
                     width: 24px;
                     height: 15px;
@@ -341,37 +450,108 @@
                     top: 31px;
                     transition: all 0.3s ease-in-out;
                 }
+                
                 &.active {
-                    background-color: rgb(171, 167, 119, 0.17);
+                    background-color: #F6F6F6;
                     &:after {
                         transform: rotate(180deg);
                     }
                 }
+                
                 .sub-menu {
-                    // background-color: rgb(171, 167, 119, 0.17);
                     @apply pb-10;
+                    display: none;
+                    position: relative;
+                    width: 100%;
+                    max-width: 100%;
+                    overflow-x: hidden;
+                    overflow-y: visible;
+                    box-sizing: border-box;
+                    
                     li {
                         @apply pl-35;
-                        &:before {
-                            width: 12px;
-                            height: 19px;
-                            display: inline-block;
-                            background-image: url('../assets/sub-chevron.svg');
-                            background-repeat: no-repeat;
-                            content: '';
-                            position: absolute;
-                            left: 35px;
-                            top: 50%;
-                            transform: translateY(-50%);
-                            transition: all 0.3s ease-in-out;
+                        position: relative;
+                        width: 100%;
+                        overflow: visible;
+                        
+                        &:after {
+                            display: none;
+                            content: none;
                         }
+                        
+                        &.menu-item-has-children {
+                            position: relative;
+                            width: 100%;
+                            overflow: visible;
+                            
+                            &:before {
+                                width: 12px;
+                                height: 19px;
+                                display: inline-block;
+                                background-image: url('../assets/sub-chevron.svg');
+                                background-repeat: no-repeat;
+                                content: '';
+                                position: absolute;
+                                left: 35px;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                transition: all 0.3s ease-in-out;
+                                z-index: 12;
+                                pointer-events: none;
+                            }
+                            
+                            &.active:before {
+                                transform: translateY(-50%) rotate(90deg);
+                            }
+                            
+                            .sub-menu {
+                                display: none;
+                                position: relative;
+                                width: 100%;
+                                max-width: 100%;
+                                margin-left: 0;
+                                margin-right: 0;
+                                padding-left: 20px;
+                                padding-right: 0;
+                                padding-top: 10px;
+                                padding-bottom: 10px;
+                                box-sizing: border-box;
+                                left: 0;
+                                right: 0;
+                                
+                                li {
+                                    width: 100%;
+                                    max-width: 100%;
+                                    padding-left: 20px;
+                                    padding-right: 0;
+                                    box-sizing: border-box;
+                                    margin-left: 0;
+                                    margin-right: 0;
+                                    
+                                    a {
+                                        font-size: 24px;
+                                        line-height: 40px;
+                                        width: 100%;
+                                        max-width: 100%;
+                                        box-sizing: border-box;
+                                        padding-right: 30px;
+                                    }
+                                }
+                            }
+                            
+                            &.active .sub-menu {
+                                display: block;
+                            }
+                        }
+                        
                         a {
-                            @apply w-full relative  py-0; 
+                            @apply w-full relative py-0 text-[24px] sm:text-[27px];
                             color: #444;
                             font-size: 27px;
                             font-style: normal;
                             font-weight: 400;
                             line-height: 50px;
+                            
                             &:before {
                                 position: absolute;
                                 top: 100%;
@@ -381,8 +561,8 @@
                                 content: '';
                                 background-image: url('../assets/border.svg');
                             }
-                            @apply text-[24px] sm:text-[27px];
                         }
+                        
                         &:last-child {
                             a {
                                 &:before {
@@ -401,21 +581,23 @@
         }
     }
 
-
-
-    // &:after {
-    //     position: absolute;
-    //     top: 100%;
-    //     left: 0;
-    //     content: '';
-    //     height: 140px;
-    //     width: 200px;
-    //     background-image: url('../assets/shape.svg');
-
-    //     pointer-events: none;
-    // }
-        background-image: url('../assets/shape.svg');
-        background-size: 200px 200px;
-        background-repeat: no-repeat;
-        background-position: 0 104%;
+    &__logo {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 200px;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+        pointer-events: none;
+        
+        img {
+            display: block;
+            width: 157px;
+            height: 157px;
+            object-fit: contain;
+        }
+    }
 }

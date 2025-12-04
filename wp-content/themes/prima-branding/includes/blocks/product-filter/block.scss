@@ -1,0 +1,188 @@
+.product-filter {
+    margin-top: 0;
+    margin-bottom: 0;
+    
+    .section-header {
+        font-family: canada-type-gibson, sans-serif;
+        font-weight: 300;
+        font-style: normal;
+        font-size: 55px;
+        line-height: 70px;
+        letter-spacing: 0;
+        text-align: center;
+        padding-top: 84px;
+        padding-bottom: 75px;
+        
+        @media (max-width: 767px) {
+            font-size: 45px;
+            line-height: 60px;
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+    }
+    
+    .product-filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+        justify-content: center;
+        align-items: flex-start;
+        padding-bottom: 60px;
+        
+        @media (max-width: 767px) {
+            flex-direction: column;
+            gap: 30px;
+            padding-bottom: 40px;
+        }
+    }
+    
+    .filter-group {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        width: 100%;
+        max-width: 100%;
+        
+        @media (max-width: 767px) {
+            gap: 20px;
+        }
+        
+        .filter-label {
+            font-family: canada-type-gibson, sans-serif;
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 1.2;
+            color: #414042;
+            text-transform: uppercase;
+            margin: 0;
+            text-align: center;
+            
+            @media (max-width: 767px) {
+                font-size: 20px;
+            }
+        }
+        
+        .filter-options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            justify-items: center;
+            
+            @media (max-width: 767px) {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 12px;
+            }
+        }
+        
+        .filter-option-tile {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            min-height: 60px;
+            cursor: pointer;
+            user-select: none;
+            border: 2px solid #414042;
+            background: #fff;
+            transition: all 0.3s ease;
+            
+            @media (max-width: 767px) {
+                min-height: 50px;
+            }
+            
+            .filter-checkbox {
+                position: absolute;
+                opacity: 0;
+                width: 0;
+                height: 0;
+                pointer-events: none;
+            }
+            
+            .filter-tile-content {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                padding: 12px 20px;
+                font-family: canada-type-gibson, sans-serif;
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 1.4;
+                color: #414042;
+                text-align: center;
+                transition: color 0.3s ease;
+                
+                @media (max-width: 767px) {
+                    padding: 10px 15px;
+                    font-size: 16px;
+                }
+            }
+            
+            &:hover {
+                border-color: #c1d82e;
+                background: #f9f9f9;
+                
+                .filter-tile-content {
+                    color: #c1d82e;
+                }
+            }
+            
+            // Checked state
+            .filter-checkbox:checked ~ .filter-tile-content {
+                color: #fff;
+            }
+            
+            // When checkbox is checked, style the label
+            &:has(.filter-checkbox:checked) {
+                border-color: #414042;
+                background: #414042;
+            }
+            
+            // Fallback for browsers that don't support :has()
+            &.checked {
+                border-color: #414042;
+                background: #414042;
+                
+                .filter-tile-content {
+                    color: #fff;
+                }
+            }
+        }
+    }
+    
+    .filter-reset {
+        text-align: center;
+        padding-top: 20px;
+        
+        .reset-filters-btn {
+            font-family: canada-type-gibson, sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            color: #414042;
+            background: transparent;
+            border: 1px solid #414042;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            
+            &:hover {
+                background: #414042;
+                color: #fff;
+            }
+        }
+    }
+}
+
+// Filtered product styles - hide products that don't match
+.products-grid {
+    .product-card {
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        
+        &.filtered-out {
+            display: none;
+        }
+    }
+}
+

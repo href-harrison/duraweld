@@ -1,0 +1,30 @@
+{
+    "name": "acf/product-filtered-grid",
+    "title": "Product Filtered Grid",
+    "description": "Displays child products filtered by a dropdown selector with custom images and product relationships.",
+    "category": "theme",
+    "apiVersion": 2,
+    "example": {
+        "attributes": {
+            "data": {
+                "preview-screenshot": "block-preview.png"
+            },
+            "mode": "preview"
+        }
+    },
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "includes/blocks/product-filtered-grid/block.php"
+    },
+    "style": "file:./dist/block.min.css",
+    "script": "file:./dist/block.js",
+    "supports": {
+        "anchor": true,
+        "mode": true,
+        "align": false,
+        "color": {
+            "background": true,
+            "text": false
+        }
+    }
+}

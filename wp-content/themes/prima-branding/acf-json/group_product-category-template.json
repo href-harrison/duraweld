@@ -1,0 +1,187 @@
+{
+    "key": "group_product-category-template",
+    "title": "Product Category Template",
+    "fields": [
+        {
+            "key": "field_block_1_product_relationship",
+            "label": "Block 1: Product Relationship Grid",
+            "name": "block_1_product_relationship",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "First product relationship grid",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "group_product-relationship"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
+        },
+        {
+            "key": "field_block_wysiwyg",
+            "label": "Block 2: WYSIWYG Content",
+            "name": "block_wysiwyg",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "WYSIWYG content block",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "group_wysiwyg-content"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
+        },
+        {
+            "key": "field_block_2_product_relationship",
+            "label": "Block 3: Product Relationship Grid (Second)",
+            "name": "block_2_product_relationship",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "Second product relationship grid",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "group_product-relationship"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
+        },
+        {
+            "key": "field_block_3_product_relationship",
+            "label": "Block 4: Product Relationship Grid (Third)",
+            "name": "block_3_product_relationship",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "Third product relationship grid",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "group_product-relationship"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
+        },
+        {
+            "key": "field_block_product_categories",
+            "label": "Block 5: Product Categories Grid",
+            "name": "block_product_categories",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "Product categories grid (appears after third relationship grid)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "group_product-categories"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
+        },
+        {
+            "key": "field_block_logo_carousel",
+            "label": "Block 6: Logo Carousel",
+            "name": "block_logo_carousel",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "Logo carousel block",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "group_logo-carousel"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
+        },
+        {
+            "key": "field_block_benefits",
+            "label": "Block 7: Benefits Block",
+            "name": "block_benefits",
+            "aria-label": "",
+            "type": "clone",
+            "instructions": "Benefits block",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "group_benefits-block"
+            ],
+            "display": "seamless",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/product-category-template"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Complete product category page template with all blocks in order",
+    "show_in_rest": 0,
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1736000000
+}
+

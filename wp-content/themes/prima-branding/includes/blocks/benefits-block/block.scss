@@ -1,17 +1,17 @@
 .benefits-block {
-    @apply bg-[#E5E5E5] pt-37 pb-54 mt-8 xl:mt-18 md:py-14;
+    background: #F5F5F5;
+    @apply pt-37 pb-54 mt-8 xl:mt-18 md:py-14;
 
     .site-container {
         
     }
 
     .benefits-list {
-        @apply flex flex-col items-center gap-10 md:flex-row md:flex-wrap md:justify-center md:gap-x-20  mx-auto 2xl:w-[70%] 2xl:gap-x-45;
-        @media screen and (min-width: 1400px) {
-            @apply w-full;
-        }
-        @media screen and (min-width: 1400px) {
-            width: calc(100% - 120px);
+        @apply flex flex-col items-center gap-10 md:flex-row md:flex-wrap md:justify-center md:gap-x-20;
+        
+        @media (min-width: 1640px) {
+            @apply flex-nowrap justify-between mx-0;
+            width: 100%;
         }
     }
 
@@ -19,19 +19,14 @@
         @apply flex items-center w-fit text-center gap-15; 
 
         h5 {
-            color: #444;
-            text-align: center;
-            font-size: 20px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 35px; /* 175% */
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            @apply text-[#444] text-center text-[20px] font-normal leading-[35px] tracking-[2px] uppercase;
+            
             @media screen and (max-width: 400px) {
-                font-size: 16px;
+                @apply text-[16px];
             }
+            
             @media screen and (min-width: 1280px) and (max-width: 1450px) {
-                font-size: 18px;
+                @apply text-[18px];
             }
         }
 

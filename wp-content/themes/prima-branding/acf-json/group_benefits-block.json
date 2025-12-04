@@ -1,0 +1,133 @@
+{
+    "key": "group_benefits-block",
+    "title": "Benefits Block",
+    "fields": [
+        {
+            "key": "field_benefits_block_use_site_options",
+            "label": "Use Site Options",
+            "name": "use_site_options",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Use global product benefits from Site Options, or override with block-specific benefits below.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Use site options",
+            "default_value": 1,
+            "ui_on_text": "Yes",
+            "ui_off_text": "No",
+            "ui": 1,
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_benefits_block_repeater",
+            "label": "Benefits",
+            "name": "benefits_repeater",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Add benefits to display (only used if not using site options)",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_benefits_block_use_site_options",
+                        "operator": "==",
+                        "value": "0"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Benefit",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_benefits_block_icon",
+                    "label": "Icon",
+                    "name": "icon",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium",
+                    "allow_in_bindings": 0
+                },
+                {
+                    "key": "field_benefits_block_header",
+                    "label": "Header",
+                    "name": "header",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "allow_in_bindings": 0
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/benefits-block"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1735816000
+}
+

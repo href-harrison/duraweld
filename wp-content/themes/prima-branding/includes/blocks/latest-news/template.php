@@ -50,7 +50,50 @@ if ($block && $block_id && isset($block['ghostkit']['styles']) && $spacings = $b
             <?php endif; ?>
             <?php if($copy) : ?>
                 <div class="copy" data-aos="fade-in">
-                    <?php echo $copy; ?>
+                    <?php 
+                    // Extract first paragraph and remaining content for read more
+                    $copy_content = $copy;
+                    
+                    // Split by paragraph tags
+                    preg_match_all('/<p[^>]*>.*?<\/p>/s', $copy_content, $copy_paragraphs);
+                    
+                    $first_para = '';
+                    $remaining_content = '';
+                    
+                    if (!empty($copy_paragraphs[0])) {
+                        $first_para = $copy_paragraphs[0][0];
+                        if (count($copy_paragraphs[0]) > 1) {
+                            $remaining_content = implode('', array_slice($copy_paragraphs[0], 1));
+                        }
+                    } else {
+                        // If no paragraph tags, use the content as-is
+                        $first_para = $copy_content;
+                    }
+                    ?>
+                    <div class="copy-excerpt">
+                        <?php 
+                        // On mobile: show first paragraph with ellipsis, hide rest
+                        // On tablet/desktop: show all content
+                        if (!empty($remaining_content)) {
+                            // Add ellipsis to the end of first paragraph for mobile only
+                            $first_para = rtrim($first_para);
+                            // Check if it ends with a closing tag, if so add ellipsis before it
+                            if (preg_match('/^(.*)(<\/p>)$/s', $first_para, $matches)) {
+                                $first_para = $matches[1] . '  <span class="copy-ellipsis">...</span>' . $matches[2];
+                            } else {
+                                $first_para .= '  <span class="copy-ellipsis">...</span>';
+                            }
+                        }
+                        echo $first_para; 
+                        ?>
+                        
+                        <?php if (!empty($remaining_content)) : ?>
+                            <div class="copy-content-expanded">
+                                <?php echo $remaining_content; ?>
+                            </div>
+                            <a href="#" class="read-more-link" data-copy-id="copy-<?php echo $block_id; ?>">Read more</a>
+                        <?php endif; ?>
+                    </div>
                 </div>
             <?php endif; ?>
             <?php if($link) : ?>

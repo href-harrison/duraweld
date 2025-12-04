@@ -1,0 +1,178 @@
+{
+    "key": "group_product-filtered-grid",
+    "title": "Product Filtered Grid",
+    "fields": [
+        {
+            "key": "field_header",
+            "label": "Header",
+            "name": "header",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Optional section header text.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_parent_filter",
+            "label": "Parent Filter (Optional)",
+            "name": "parent_filter",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "Optional: Select a parent filter term (e.g., Size or Style) for organizational purposes. This doesn't affect which filter terms are displayed - you manually select those in the Filter Items section below.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "taxonomy": "product_filters",
+            "field_type": "select",
+            "allow_null": 1,
+            "multiple": 0,
+            "return_format": "object",
+            "add_term": 0,
+            "save_terms": 0,
+            "load_terms": 0,
+            "bidirectional": 0,
+            "allow_in_bindings": 0,
+            "ajax": 1,
+            "parent": 0
+        },
+        {
+            "key": "field_filter_items",
+            "label": "Filter Items",
+            "name": "filter_items",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Add filter terms with their images and related products. Each item represents a filter term (e.g., A4, A5 under Size).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Filter Item",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_filter_term",
+                    "label": "Filter Term",
+                    "name": "filter_term",
+                    "aria-label": "",
+                    "type": "taxonomy",
+                    "instructions": "Select a filter term from the product_filters taxonomy.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "taxonomy": "product_filters",
+                    "field_type": "select",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "return_format": "object",
+                    "add_term": 0,
+                    "save_terms": 0,
+                    "load_terms": 0,
+                    "bidirectional": 0,
+                    "allow_in_bindings": 0,
+                    "ajax": 1
+                },
+                {
+                    "key": "field_filter_item_image",
+                    "label": "Filter Image",
+                    "name": "filter_image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "Upload a default image for this filter term. Individual products can override this with their own filter-specific images.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium",
+                    "allow_in_bindings": 0
+                }
+            ],
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_toggle_overlay",
+            "label": "Toggle Overlay",
+            "name": "toggle_overlay",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Enable/disable toggle overlay on product cards.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "allow_in_bindings": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf/product-filtered-grid"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Fields for the Product Filtered Grid block. Configure filter terms, images, and related products.",
+    "show_in_rest": 0,
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1735816000
+}

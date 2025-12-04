@@ -18,6 +18,7 @@ $data = $args['data'];
 
 $variant = $data['variant'] ?? 'default';
 $header = $data['header'];
+$body_text = $data['body_text'] ?? false;
 $link = $data['link'];
 $image = $data['image'];
 $mobile_image = $data['mobile_image'];
@@ -90,68 +91,76 @@ if ($block && $block_id && isset($block['ghostkit']['styles']) && $spacings = $b
             }
         }
         ?>
-        <div class="home-hero--image-wrapper" style="width: 100vw; max-width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); height: 557px; max-height: 557px; overflow: hidden; position: relative;">
+        <div class="home-hero--image-wrapper">
             <?php if($image_url && $mobile_url) : ?>
-                <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>" class="desktop-image" data-aos="fade-up" style="display: none; width: 100%; height: 557px; max-height: 557px; object-fit: cover; object-position: center;">
-                <img src="<?php echo esc_url($mobile_url); ?>" alt="<?php echo esc_attr($mobile_alt); ?>" class="mobile-image" data-aos="fade-up" style="display: block; width: 100%; height: auto;">
-                <style>
-                    @media (min-width: 768px) {
-                        .home-hero--image-only .home-hero--image-wrapper .mobile-image {
-                            display: none !important;
-                            visibility: hidden !important;
-                            opacity: 0 !important;
-                            height: 0 !important;
-                            width: 0 !important;
-                            overflow: hidden !important;
-                            position: absolute !important;
-                            pointer-events: none !important;
-                        }
-                        .home-hero--image-only .home-hero--image-wrapper .desktop-image {
-                            display: block !important;
-                            visibility: visible !important;
-                            opacity: 1 !important;
-                            width: 100% !important;
-                            height: 557px !important;
-                            max-height: 557px !important;
-                            object-fit: cover !important;
-                            object-position: center !important;
-                        }
-                        .home-hero--image-only .home-hero--image-wrapper {
-                            height: 557px !important;
-                            max-height: 557px !important;
-                        }
-                    }
-                </style>
+                <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>" class="desktop-image" data-aos="fade-up">
+                <img src="<?php echo esc_url($mobile_url); ?>" alt="<?php echo esc_attr($mobile_alt); ?>" class="mobile-image" data-aos="fade-up">
             <?php elseif($image_url) : ?>
-                <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>" data-aos="fade-up" style="width: 100%; height: 557px; max-height: 557px; object-fit: cover; object-position: center;">
+                <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>" data-aos="fade-up">
             <?php elseif($mobile_url) : ?>
-                <img src="<?php echo esc_url($mobile_url); ?>" alt="<?php echo esc_attr($mobile_alt); ?>" data-aos="fade-up" style="width: 100%; height: auto;">
+                <img src="<?php echo esc_url($mobile_url); ?>" alt="<?php echo esc_attr($mobile_alt); ?>" data-aos="fade-up">
             <?php endif; ?>
         </div>
     <?php else : ?>
-        <!-- Default variant: with headline and CTA -->
-        <div class="site-container">
-            <div class="home-hero--left">
+        <!-- Default variant: with headline and CTA - matching product grid overlay style (static overlay) -->
+        <?php 
+        // Handle image - could be ID, array, or object
+        $image_url = '';
+        $mobile_url = '';
+        $image_alt = '';
+        $mobile_alt = '';
+        
+        if (!empty($image)) {
+            if (is_numeric($image)) {
+                $image = acf_get_attachment($image);
+            }
+            if (is_array($image)) {
+                $image_url = $image['url'] ?? '';
+                $image_alt = $image['alt'] ?? $image['title'] ?? '';
+            } elseif (is_object($image)) {
+                $image_url = $image->url ?? '';
+                $image_alt = $image->alt ?? $image->title ?? '';
+            }
+        }
+        
+        if (!empty($mobile_image)) {
+            if (is_numeric($mobile_image)) {
+                $mobile_image = acf_get_attachment($mobile_image);
+            }
+            if (is_array($mobile_image)) {
+                $mobile_url = $mobile_image['url'] ?? '';
+                $mobile_alt = $mobile_image['alt'] ?? $mobile_image['title'] ?? '';
+            } elseif (is_object($mobile_image)) {
+                $mobile_url = $mobile_image->url ?? '';
+                $mobile_alt = $mobile_image->alt ?? $mobile_image->title ?? '';
+            }
+        }
+        ?>
+        <div class="home-hero--image-wrapper">
+            <?php if($image_url || $mobile_url) : ?>
+                <?php if($image_url && $mobile_url) : ?>
+                    <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>" class="desktop-image" data-aos="fade-up">
+                    <img src="<?php echo esc_url($mobile_url); ?>" alt="<?php echo esc_attr($mobile_alt); ?>" class="mobile-image" data-aos="fade-up">
+                <?php elseif($image_url) : ?>
+                    <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($image_alt); ?>" data-aos="fade-up">
+                <?php elseif($mobile_url) : ?>
+                    <img src="<?php echo esc_url($mobile_url); ?>" alt="<?php echo esc_attr($mobile_alt); ?>" data-aos="fade-up">
+                <?php endif; ?>
+            <?php endif; ?>
+            <!-- Dark overlay (static, always visible) -->
+            <div class="home-hero--overlay">
                 <div class="text">
                     <?php if($header) : ?>
-                        <h1 data-aos="fade-in"><?php echo $header; ?></h1>
+                        <h2 data-aos="fade-in"><?php echo esc_html($header); ?></h2>
                     <?php endif; ?>
-                    <?php if($link) : ?>
-                        <a href="<?php echo $link['url']; ?>" class="btn-pb btn-pb--arrow" data-aos="fade-in"><?php echo $link['title']; ?></a>
+                    <?php if ($body_text) : ?>
+                        <p data-aos="fade-in" data-aos-delay="100"><?php echo wp_kses_post($body_text); ?></p>
+                    <?php endif; ?>
+                    <?php if($link && is_array($link) && !empty($link['url'])) : ?>
+                        <a href="<?php echo esc_url($link['url']); ?>" class="btn-pb--arrow" data-aos="fade-in" data-aos-delay="200" <?php if(!empty($link['target'])) : ?>target="<?php echo esc_attr($link['target']); ?>"<?php endif; ?>><?php echo esc_html($link['title'] ?? 'Find out more'); ?></a>
                     <?php endif; ?>
                 </div>
             </div>
-            <div class="home-hero--right">
-                    <?php if($image && $mobile_image) : ?>
-                        <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" class="desktop-image" data-aos="fade-up">
-                        <img src="<?php echo $mobile_image['url']; ?>" alt="<?php echo $mobile_image['alt']; ?>" class="mobile-image" data-aos="fade-up">
-                    <?php elseif($image) : ?>
-                        <img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" data-aos="fade-up">
-                    <?php endif; ?>
-            </div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="52" height="27" viewBox="0 0 52 27" fill="none" class="shape">
-            <path d="M26 0L51.9808 26.25H0.0192375L26 0Z" fill="white"/>
-            </svg>
         </div>
     <?php endif; ?>
 </section>
